@@ -38,7 +38,7 @@ export default function OverlapMatrix({ overlap, totalInvested = 0, ghost }) {
           return (
             <div key={`${pair.idA}-${pair.idB}`} className="card p-4">
               <div className="text-xs text-[#a0a0a6] mb-3">
-                {shortName(pair.fundA)} <span className="text-[#3a3a40]">vs</span> {shortName(pair.fundB)}
+                {shortName(pair.fundA)} <span className="text-[#a0a0a6]">vs</span> {shortName(pair.fundB)}
               </div>
               <div className="flex items-end justify-between">
                 <span className={`text-2xl font-semibold ${tone.text}`}>{pair.overlapPct}%</span>
