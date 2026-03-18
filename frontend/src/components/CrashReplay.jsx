@@ -3,6 +3,20 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recha
 
 const INR = new Intl.NumberFormat("en-IN");
 
+function shortName(name) {
+  return String(name || "").split(" Fund")[0];
+}
+
+function RecoveryBar({ months, maxMonths }) {
+  const pct = maxMonths > 0 ? Math.min((months / maxMonths) * 100, 100) : 0;
+  const color = months <= 12 ? "bg-emerald-500" : months <= 24 ? "bg-amber-500" : "bg-red-500";
+  return (
+    <div className="h-1.5 rounded-full bg-white/[0.05] flex-1">
+      <div className={`h-1.5 rounded-full ${color}`} style={{ width: `${pct}%` }} />
+    </div>
+  );
+}
+
 export default function CrashReplay({ replays }) {
   const [selectedId, setSelectedId] = useState("");
   const selected = useMemo(() => {
@@ -17,6 +31,11 @@ export default function CrashReplay({ replays }) {
     drawdownPct: Math.abs(loss.drawdownPct),
     lossRupees: loss.lossRupees,
   }));
+
+  const vsNifty = selected.vsNifty;
+  const recoveryTimeline = selected.recoveryTimeline || [];
+  const maxRecovery = recoveryTimeline.reduce((m, r) => Math.max(m, r.recoveryMonths), 0);
+  const perFundLoss = selected.perFundLoss || [];
 
   return (
     <section className="space-y-4">
@@ -52,7 +71,41 @@ export default function CrashReplay({ replays }) {
           Portfolio drops {selected.portfolioLossPct}% from INR {INR.format(selected.totalInvested)} to INR{" "}
           {INR.format(selected.surviving)}.
         </p>
+
+        {/* Portfolio vs Nifty */}
+        {vsNifty && (
+          <div className={`mt-3 pt-3 border-t border-white/[0.06] flex items-center gap-3 text-xs`}>
+            <span className="text-[#5c5c63]">vs Nifty 50:</span>
+            <span className="text-[#a0a0a6]">Nifty fell {vsNifty.niftyLossPct}%</span>
+            <span className={vsNifty.betterThanNifty ? "text-emerald-400" : "text-amber-400"}>
+              {vsNifty.betterThanNifty
+                ? `You beat Nifty by ${Math.abs(vsNifty.diff)}%`
+                : `You underperformed by ${vsNifty.diff}%`}
+            </span>
+          </div>
+        )}
       </div>
+
+      {/* Per-fund loss cards */}
+      {perFundLoss.length > 0 && (
+        <div>
+          <div className="text-xs text-[#5c5c63] mb-2">Estimated loss per fund</div>
+          <div className="grid sm:grid-cols-2 gap-2">
+            {perFundLoss.map((f) => (
+              <div key={f.name} className="card p-3">
+                <div className="text-xs text-[#ececed] mb-1">{shortName(f.name)}</div>
+                <div className="flex items-baseline justify-between">
+                  <span className="text-base text-red-400 font-medium">-INR {INR.format(f.lossRupees)}</span>
+                  <span className="text-[11px] text-[#5c5c63]">{f.lossPct}% loss</span>
+                </div>
+                <div className="text-[11px] text-[#5c5c63] mt-0.5">
+                  Surviving: INR {INR.format(f.surviving)}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="card p-4">
         <div className="text-xs text-[#5c5c63] mb-3">Sector-wise loss by drawdown</div>
@@ -65,10 +118,6 @@ export default function CrashReplay({ replays }) {
                 cursor={false}
                 contentStyle={{ backgroundColor: "#1a1a1b", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 8 }}
                 labelStyle={{ color: "#ececed" }}
-                formatter={(value, name, props) => {
-                  if (name === "drawdownPct") return [`${value.toFixed(1)}%`, "Drawdown"];
-                  return [`INR ${INR.format(value)}`, "Loss"];
-                }}
                 content={({ active, payload }) => {
                   if (!active || !payload?.length) return null;
                   const d = payload[0]?.payload;
@@ -86,6 +135,29 @@ export default function CrashReplay({ replays }) {
           </ResponsiveContainer>
         </div>
       </div>
+
+      {/* Recovery Timeline */}
+      {recoveryTimeline.length > 0 && (
+        <div className="card p-4">
+          <div className="text-xs text-[#5c5c63] mb-3">Estimated recovery timeline</div>
+          <div className="space-y-2">
+            {recoveryTimeline.slice(0, 8).map((r) => (
+              <div key={r.sector} className="flex items-center gap-3">
+                <span className="text-[11px] text-[#a0a0a6] w-28 shrink-0">{r.sector}</span>
+                <RecoveryBar months={r.recoveryMonths} maxMonths={maxRecovery} />
+                <span className={`text-[11px] w-16 text-right shrink-0 ${
+                  r.recoveryMonths <= 12 ? "text-emerald-400" : r.recoveryMonths <= 24 ? "text-amber-400" : "text-red-400"
+                }`}>
+                  {r.recoveryMonths} mo
+                </span>
+              </div>
+            ))}
+          </div>
+          <p className="text-[11px] text-[#5c5c63] mt-3">
+            Recovery = months for sectoral index to return to pre-crash highs.
+          </p>
+        </div>
+      )}
 
       <p className="text-xs text-[#5c5c63]">
         Drawdowns sourced from NSE sectoral index historical data. Your loss is computed by applying each sector&apos;s

@@ -15,12 +15,24 @@ import { SplineScene } from "./components/ui/splite";
 import { Spotlight } from "./components/ui/spotlight";
 import { Card } from "./components/ui/card";
 import { DEMO_PORTFOLIOS } from "./data/demoPortfolios";
+import { NIFTY_BENCHMARK } from "./data/niftyBenchmark";
 import { analyseOverlap } from "./lib/overlap";
 import { computeSectorExposure } from "./lib/sectorRisk";
 import { generateELI5 } from "./lib/eli5";
-import { buildGhostPortfolio } from "./lib/ghostPortfolio";
-import { replayAllCrashes } from "./lib/crashReplay";
-import { computeRupeeAtRisk } from "./lib/rupeeAtRisk";
+import {
+  buildGhostPortfolio,
+  compareWithNifty,
+  computeFundContributions,
+  computeCapBreakdown,
+} from "./lib/ghostPortfolio";
+import {
+  replayAllCrashes,
+  computeRecoveryTimeline,
+  computePerFundLoss,
+  portfolioVsNifty,
+} from "./lib/crashReplay";
+import { findWorstTriggers } from "./lib/contagion";
+import { computeRupeeAtRisk, computeRiskBudget } from "./lib/rupeeAtRisk";
 
 function getApiBaseUrl() {
   return import.meta.env.VITE_API_BASE_URL ?? "";
@@ -63,11 +75,44 @@ export default function App() {
       const sectorExposure = computeSectorExposure(safePortfolio);
       const eli5 = generateELI5(safePortfolio, overlap, sectorExposure);
       const totalInvested = safePortfolio.reduce((sum, item) => sum + item.amount, 0);
-      const ghost = buildGhostPortfolio(safePortfolio);
-      const crashReplays = replayAllCrashes(totalInvested, sectorExposure);
-      const rupeeAtRisk = computeRupeeAtRisk(totalInvested, sectorExposure);
 
-      setResults({ overlap, sectorExposure, eli5, totalInvested, ghost, crashReplays, rupeeAtRisk, portfolio: safePortfolio });
+      // Ghost Portfolio + V2.2 enrichments
+      const ghost = buildGhostPortfolio(safePortfolio);
+      const niftyComparison = compareWithNifty(ghost, NIFTY_BENCHMARK);
+      const fundContributions = computeFundContributions(safePortfolio);
+      const capBreakdown = computeCapBreakdown(ghost.holdings, NIFTY_BENCHMARK.topStocks);
+
+      // Crash Replay + V2.2 enrichments
+      const crashReplays = replayAllCrashes(totalInvested, sectorExposure);
+      const enrichedReplays = crashReplays.map((replay) => ({
+        ...replay,
+        recoveryTimeline: computeRecoveryTimeline(replay),
+        perFundLoss: computePerFundLoss(safePortfolio, replay.event),
+        vsNifty: portfolioVsNifty(replay),
+      }));
+
+      // Contagion: worst triggers
+      const worstTriggers = findWorstTriggers(totalInvested, sectorExposure, 30);
+
+      // Rupee-at-Risk + risk budget
+      const rupeeAtRisk = computeRupeeAtRisk(totalInvested, sectorExposure);
+      const riskBudget = computeRiskBudget(totalInvested, sectorExposure);
+
+      setResults({
+        overlap,
+        sectorExposure,
+        eli5,
+        totalInvested,
+        ghost,
+        niftyComparison,
+        fundContributions,
+        capBreakdown,
+        crashReplays: enrichedReplays,
+        worstTriggers,
+        rupeeAtRisk,
+        riskBudget,
+        portfolio: safePortfolio,
+      });
       setResultPage("overview");
       setDeepTab("var");
       setTimeout(() => {
@@ -263,13 +308,33 @@ export default function App() {
                   ))}
                 </div>
 
-                {deepTab === "var" ? <RupeeAtRisk varResult={results.rupeeAtRisk} /> : null}
-                {deepTab === "ghost" ? <GhostPortfolio ghost={results.ghost} /> : null}
-                {deepTab === "replay" ? <CrashReplay replays={results.crashReplays} /> : null}
-                {deepTab === "contagion" ? (
-                  <ContagionMap totalInvested={results.totalInvested} sectorExposure={results.sectorExposure} />
+                {deepTab === "var" ? (
+                  <RupeeAtRisk
+                    varResult={results.rupeeAtRisk}
+                    riskBudget={results.riskBudget}
+                  />
                 ) : null}
-                {deepTab === "swap" ? <FundSwapLab portfolio={results.portfolio} allFunds={allFunds} /> : null}
+                {deepTab === "ghost" ? (
+                  <GhostPortfolio
+                    ghost={results.ghost}
+                    niftyComparison={results.niftyComparison}
+                    fundContributions={results.fundContributions}
+                    capBreakdown={results.capBreakdown}
+                  />
+                ) : null}
+                {deepTab === "replay" ? (
+                  <CrashReplay replays={results.crashReplays} />
+                ) : null}
+                {deepTab === "contagion" ? (
+                  <ContagionMap
+                    totalInvested={results.totalInvested}
+                    sectorExposure={results.sectorExposure}
+                    worstTriggers={results.worstTriggers}
+                  />
+                ) : null}
+                {deepTab === "swap" ? (
+                  <FundSwapLab portfolio={results.portfolio} allFunds={allFunds} />
+                ) : null}
               </div>
             )}
           </section>

@@ -103,6 +103,108 @@ export function buildGhostPortfolio(portfolio) {
   };
 }
 
+/**
+ * Stress-test the top N holdings by applying a uniform drop percentage.
+ * Returns aggregate loss and per-holding breakdown.
+ */
+export function stockStressTest(holdings, dropPct, topN = 10) {
+  const top = holdings.slice(0, topN);
+  const totalAffectedWeight = +top.reduce((sum, h) => sum + h.effectiveWeight, 0).toFixed(1);
+  const lossRupees = top.reduce((sum, h) => sum + Math.round(h.investedAmount * dropPct / 100), 0);
+  return {
+    dropPct,
+    topN,
+    totalAffectedWeight,
+    lossRupees,
+    holdings: top.map((h) => ({
+      ticker: h.ticker,
+      name: h.name,
+      effectiveWeight: h.effectiveWeight,
+      investedAmount: h.investedAmount,
+      stressLoss: Math.round(h.investedAmount * dropPct / 100),
+    })),
+  };
+}
+
+/**
+ * Compare ghost portfolio metrics against Nifty 50 benchmark.
+ */
+export function compareWithNifty(ghost, niftyBenchmark) {
+  const hhiDiff = +(ghost.hhi - niftyBenchmark.hhi).toFixed(1);
+  const terDiff = +(ghost.effectiveTER - niftyBenchmark.ter).toFixed(2);
+  const annualExcessFee = Math.round((ghost.totalInvested * Math.max(terDiff, 0)) / 100);
+
+  const niftyTickers = new Set(
+    (niftyBenchmark.topStocks || []).map((s) => String(s.ticker || "").toUpperCase())
+  );
+  const ownedNiftyStocks = ghost.holdings.filter((h) =>
+    niftyTickers.has(String(h.ticker || "").toUpperCase())
+  );
+  const niftyOverlapPct = +ownedNiftyStocks
+    .reduce((sum, h) => sum + h.effectiveWeight, 0)
+    .toFixed(1);
+
+  return {
+    hhiDiff,
+    portfolioHhi: ghost.hhi,
+    niftyHhi: niftyBenchmark.hhi,
+    terDiff,
+    annualExcessFee,
+    niftyOverlapPct,
+    ownedNiftyCount: ownedNiftyStocks.length,
+    niftyStockCount: niftyBenchmark.topStocks.length,
+  };
+}
+
+/**
+ * Per-fund breakdown: weight in portfolio, TER, annual cost, and top holding.
+ */
+export function computeFundContributions(portfolio) {
+  const totalInvested = portfolio.reduce((sum, item) => sum + (Number(item?.amount) || 0), 0);
+  if (!totalInvested) return [];
+  return portfolio.map((item) => {
+    const amount = Number(item?.amount) || 0;
+    const weight = +((amount / totalInvested) * 100).toFixed(1);
+    const ter = Number(item?.fund?.ter) || 0.6;
+    const sortedHoldings = [...(item?.fund?.holdings || [])].sort(
+      (a, b) => (Number(b.weight) || 0) - (Number(a.weight) || 0)
+    );
+    const topHolding = sortedHoldings[0];
+    return {
+      name: item.fund.name,
+      weight,
+      ter,
+      annualCost: Math.round((amount * ter) / 100),
+      topHolding: topHolding?.name || "",
+      topHoldingWeight: +(Number(topHolding?.weight) || 0).toFixed(1),
+    };
+  });
+}
+
+/**
+ * Classify ghost portfolio holdings into Large Cap vs Mid/Small Cap
+ * using the Nifty top-stock list as a large-cap proxy.
+ */
+export function computeCapBreakdown(holdings, niftyTopStocks) {
+  const largeCap = new Set(
+    (niftyTopStocks || []).map((s) => String(s.ticker || "").toUpperCase())
+  );
+  let largeCapWeight = 0;
+  let otherCapWeight = 0;
+  for (const h of holdings) {
+    const ticker = String(h.ticker || "").toUpperCase();
+    if (largeCap.has(ticker)) {
+      largeCapWeight += h.effectiveWeight;
+    } else {
+      otherCapWeight += h.effectiveWeight;
+    }
+  }
+  return [
+    { label: "Large Cap", weight: +largeCapWeight.toFixed(1) },
+    { label: "Mid / Small Cap", weight: +otherCapWeight.toFixed(1) },
+  ];
+}
+
 export function ghostSummaryText(ghost) {
   const concentration =
     ghost.hhi > 25

@@ -63,3 +63,57 @@ export function simulateContagion(totalInvested, sectorExposure, triggerSector, 
     cascade,
   };
 }
+
+/**
+ * Find the top-3 trigger sectors that cause the highest total portfolio loss
+ * when crashed at the given severity.
+ */
+export function findWorstTriggers(totalInvested, sectorExposure, crashPct = 30) {
+  const sectors = Object.keys(sectorExposure || {});
+  return sectors
+    .map((sector) => {
+      const result = simulateContagion(totalInvested, sectorExposure, sector, crashPct);
+      return {
+        sector,
+        totalLoss: result.totalLoss,
+        contagionLoss: result.contagionLoss,
+        portfolioPctLoss: result.portfolioPctLoss,
+      };
+    })
+    .sort((a, b) => b.totalLoss - a.totalLoss)
+    .slice(0, 3);
+}
+
+const ALL_SECTORS = [
+  "Banking", "IT", "Pharma", "Auto", "FMCG", "Metals", "Realty",
+  "Energy", "Infrastructure", "Telecom", "Insurance", "Capital Goods",
+  "Chemicals", "Media", "Other",
+];
+
+/**
+ * Find sectors not currently held that have the lowest average correlation
+ * with held sectors — potential diversifiers / safe havens.
+ */
+export function findSafeHavens(sectorExposure) {
+  const heldSectors = new Set(Object.keys(sectorExposure || {}));
+  const candidates = ALL_SECTORS.filter((s) => !heldSectors.has(s));
+  return candidates
+    .map((candidate) => {
+      let totalCorr = 0;
+      let count = 0;
+      for (const held of heldSectors) {
+        const corr =
+          corrMap.get(`${candidate}|${held}`) ??
+          corrMap.get(`${held}|${candidate}`) ??
+          0.2;
+        totalCorr += corr;
+        count++;
+      }
+      return {
+        sector: candidate,
+        avgCorrelation: count > 0 ? +(totalCorr / count).toFixed(2) : 0.2,
+      };
+    })
+    .sort((a, b) => a.avgCorrelation - b.avgCorrelation)
+    .slice(0, 3);
+}

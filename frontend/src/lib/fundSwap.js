@@ -124,3 +124,100 @@ export function rankReplacements(currentPortfolio, removeIndex, allFunds) {
   deduped.sort((a, b) => b.score - a.score);
   return deduped.slice(0, 5);
 }
+
+/**
+ * Simulate rebalancing the portfolio using new allocation amounts.
+ * newAmounts is an array of INR amounts parallel to portfolio entries.
+ */
+export function simulateRebalance(portfolio, newAmounts) {
+  if (!portfolio?.length) return null;
+  const newPortfolio = portfolio.map((item, i) => ({
+    ...item,
+    amount: Number(newAmounts?.[i]) || item.amount,
+  }));
+
+  const beforeOverlap = analyseOverlap(portfolio);
+  const afterOverlap = analyseOverlap(newPortfolio);
+  const beforeSector = computeSectorExposure(portfolio);
+  const afterSector = computeSectorExposure(newPortfolio);
+
+  const topBefore = Object.keys(beforeSector)[0] || "";
+  const topAfter = Object.keys(afterSector)[0] || "";
+
+  return {
+    before: {
+      avgOverlap: beforeOverlap.averageOverlapPct,
+      topSector: topBefore,
+      topSectorPct: beforeSector[topBefore]?.weightPct || 0,
+    },
+    after: {
+      avgOverlap: afterOverlap.averageOverlapPct,
+      topSector: topAfter,
+      topSectorPct: afterSector[topAfter]?.weightPct || 0,
+    },
+    delta: {
+      overlapChange: +(afterOverlap.averageOverlapPct - beforeOverlap.averageOverlapPct).toFixed(1),
+      topSectorChange: +((afterSector[topAfter]?.weightPct || 0) - (beforeSector[topBefore]?.weightPct || 0)).toFixed(1),
+    },
+    newPortfolio,
+  };
+}
+
+/**
+ * Return optimal equal-weight amounts (minimize concentration) keeping total fixed.
+ */
+export function optimizeAmounts(portfolio) {
+  if (!portfolio?.length) return [];
+  const totalInvested = portfolio.reduce((sum, item) => sum + (Number(item?.amount) || 0), 0);
+  if (!totalInvested) return portfolio.map(() => 0);
+  const base = Math.floor(totalInvested / portfolio.length);
+  const remainder = totalInvested - base * portfolio.length;
+  return portfolio.map((_, i) => base + (i === 0 ? remainder : 0));
+}
+
+/**
+ * Check whether a candidate fund is a good fit to add to the portfolio.
+ */
+export function checkFitment(portfolio, candidateFund) {
+  if (!candidateFund || !portfolio?.length) return null;
+  const totalInvested = portfolio.reduce((sum, item) => sum + (Number(item?.amount) || 0), 0);
+  const avgAmount = Math.round(totalInvested / portfolio.length);
+  const tempPortfolio = [...portfolio, { fund: candidateFund, amount: avgAmount }];
+
+  const beforeOverlap = analyseOverlap(portfolio);
+  const afterOverlap = analyseOverlap(tempPortfolio);
+  const beforeSector = computeSectorExposure(portfolio);
+  const afterSector = computeSectorExposure(tempPortfolio);
+
+  const sameCategory = portfolio.filter((item) => item.fund.category === candidateFund.category).length;
+  const avgTer = portfolio.reduce((sum, item) => sum + (Number(item?.fund?.ter) || 0.6), 0) / portfolio.length;
+  const candidateTer = Number(candidateFund.ter) || 0.6;
+  const overlapChange = +(afterOverlap.averageOverlapPct - beforeOverlap.averageOverlapPct).toFixed(1);
+  const topBefore = Object.keys(beforeSector)[0] || "";
+  const topAfter = Object.keys(afterSector)[0] || "";
+  const concentrationChange = +((afterSector[topAfter]?.weightPct || 0) - (beforeSector[topBefore]?.weightPct || 0)).toFixed(1);
+
+  const verdicts = [];
+  if (sameCategory > 0) verdicts.push(`${sameCategory} existing fund(s) in same category`);
+  if (overlapChange <= 0) verdicts.push("Zero overlap increase — diversifying");
+  else if (overlapChange <= 5) verdicts.push(`Modest overlap increase: +${overlapChange}%`);
+  else verdicts.push(`High overlap increase: +${overlapChange}%`);
+  if (candidateTer > avgTer + 0.2) verdicts.push(`TER ${candidateTer}% above portfolio avg`);
+  else verdicts.push(`TER ${candidateTer}% — competitive`);
+
+  const score =
+    (overlapChange <= 0 ? 20 : -overlapChange * 2) +
+    (sameCategory === 0 ? 10 : -5) +
+    (candidateTer <= avgTer ? 5 : 0);
+
+  return {
+    overlapChange,
+    concentrationChange,
+    sameCategory,
+    terDiff: +(candidateTer - avgTer).toFixed(2),
+    verdicts,
+    score: +score.toFixed(1),
+    verdict: score >= 20 ? "Strong fit" : score >= 5 ? "Good fit" : score >= -5 ? "Neutral" : "Poor fit",
+    verdictColor: score >= 20 ? "emerald" : score >= 5 ? "emerald" : score >= -5 ? "amber" : "red",
+  };
+}
