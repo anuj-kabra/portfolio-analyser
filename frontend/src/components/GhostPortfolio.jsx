@@ -45,29 +45,6 @@ export default function GhostPortfolio({ ghost }) {
         </div>
       </div>
 
-      <div className="overflow-x-auto card">
-        <table className="min-w-full text-sm">
-          <thead>
-            <tr className="border-b border-white/[0.06]">
-              <th className="text-left px-4 py-2 text-xs text-[#5c5c63]">Stock</th>
-              <th className="text-right px-4 py-2 text-xs text-[#5c5c63]">Weight</th>
-              <th className="text-right px-4 py-2 text-xs text-[#5c5c63]">Amount</th>
-              <th className="text-right px-4 py-2 text-xs text-[#5c5c63]">Funds</th>
-            </tr>
-          </thead>
-          <tbody>
-            {ghost.top20.map((stock) => (
-              <tr key={stock.ticker} className="border-b border-white/[0.03]">
-                <td className="px-4 py-2 text-[#ececed]">{stock.name}</td>
-                <td className="px-4 py-2 text-right text-[#a0a0a6]">{stock.effectiveWeight.toFixed(1)}%</td>
-                <td className="px-4 py-2 text-right text-[#ececed]">INR {INR.format(stock.investedAmount)}</td>
-                <td className="px-4 py-2 text-right text-[#5c5c63]">{stock.heldBy.length}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
       <div className="card p-4">
         <h3 className="text-xs font-medium text-white mb-3">Expense Ratio Breakdown</h3>
         <div className="overflow-x-auto">
@@ -116,6 +93,29 @@ export default function GhostPortfolio({ ghost }) {
             shared positions.
           </p>
         )}
+      </div>
+
+      <div className="overflow-x-auto card">
+        <table className="min-w-full text-sm">
+          <thead>
+            <tr className="border-b border-white/[0.06]">
+              <th className="text-left px-4 py-2 text-xs text-[#5c5c63]">Stock</th>
+              <th className="text-right px-4 py-2 text-xs text-[#5c5c63]">Weight</th>
+              <th className="text-right px-4 py-2 text-xs text-[#5c5c63]">Amount</th>
+              <th className="text-right px-4 py-2 text-xs text-[#5c5c63]">Funds</th>
+            </tr>
+          </thead>
+          <tbody>
+            {ghost.top20.map((stock) => (
+              <tr key={stock.ticker} className="border-b border-white/[0.03]">
+                <td className="px-4 py-2 text-[#ececed]">{stock.name}</td>
+                <td className="px-4 py-2 text-right text-[#a0a0a6]">{stock.effectiveWeight.toFixed(1)}%</td>
+                <td className="px-4 py-2 text-right text-[#ececed]">INR {INR.format(stock.investedAmount)}</td>
+                <td className="px-4 py-2 text-right text-[#5c5c63]">{stock.heldBy.length}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
       <div className="text-sm text-[#a0a0a6] leading-relaxed">

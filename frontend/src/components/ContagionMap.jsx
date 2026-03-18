@@ -88,10 +88,13 @@ export default function ContagionMap({ totalInvested, sectorExposure }) {
               <XAxis type="number" tickFormatter={(v) => `INR ${(v / 1000).toFixed(0)}k`} stroke="#5c5c63" fontSize={10} />
               <YAxis type="category" dataKey="sector" width={120} stroke="#5c5c63" fontSize={10} tick={{ fill: "#a0a0a6" }} />
               <Tooltip
+                cursor={false}
                 contentStyle={{ backgroundColor: "#1a1a1b", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 8 }}
+                labelStyle={{ color: "#ececed" }}
+                itemStyle={{ color: "#a0a0a6" }}
                 formatter={(value) => [`-INR ${INR.format(value)}`, "Loss"]}
               />
-              <Bar dataKey="lossRupees" radius={[0, 4, 4, 0]}>
+              <Bar dataKey="lossRupees" radius={[0, 4, 4, 0]} activeBar={false}>
                 {chartData.map((entry, i) => (
                   <Cell key={i} fill={entry.type === "direct" ? "#ef4444" : "#f59e0b"} />
                 ))}

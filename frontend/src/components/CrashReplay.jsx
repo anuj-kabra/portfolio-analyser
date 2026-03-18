@@ -62,6 +62,7 @@ export default function CrashReplay({ replays }) {
               <XAxis type="number" domain={[0, "auto"]} tickFormatter={(v) => `${v}%`} stroke="#5c5c63" fontSize={10} />
               <YAxis type="category" dataKey="sector" width={100} stroke="#5c5c63" fontSize={10} tick={{ fill: "#a0a0a6" }} />
               <Tooltip
+                cursor={false}
                 contentStyle={{ backgroundColor: "#1a1a1b", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 8 }}
                 labelStyle={{ color: "#ececed" }}
                 formatter={(value, name, props) => {
@@ -80,7 +81,7 @@ export default function CrashReplay({ replays }) {
                   );
                 }}
               />
-              <Bar dataKey="drawdownPct" radius={[0, 4, 4, 0]} fill="#f87171" />
+              <Bar dataKey="drawdownPct" radius={[0, 4, 4, 0]} fill="#f87171" activeBar={false} />
             </BarChart>
           </ResponsiveContainer>
         </div>
