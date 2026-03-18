@@ -4,7 +4,9 @@ function overlapTone(overlapPct) {
   return { dot: "bg-red-500", text: "text-red-400", bar: "bg-red-500", label: "High" };
 }
 
-export default function OverlapMatrix({ overlap }) {
+const INR = new Intl.NumberFormat("en-IN");
+
+export default function OverlapMatrix({ overlap, totalInvested = 0 }) {
   return (
     <section>
       <h2 className="text-sm font-medium text-white mb-1">
@@ -52,6 +54,7 @@ export default function OverlapMatrix({ overlap }) {
                   <th className="text-left px-4 py-2.5 text-xs font-medium text-[#5c5c63]">Ticker</th>
                   <th className="text-left px-4 py-2.5 text-xs font-medium text-[#5c5c63]">Funds</th>
                   <th className="text-right px-4 py-2.5 text-xs font-medium text-[#5c5c63]">Weight</th>
+                  <th className="text-right px-4 py-2.5 text-xs font-medium text-[#5c5c63]">Approx Amount</th>
                 </tr>
               </thead>
               <tbody>
@@ -61,6 +64,9 @@ export default function OverlapMatrix({ overlap }) {
                     <td className="px-4 py-2.5 text-[#5c5c63] font-mono text-xs">{stock.ticker}</td>
                     <td className="px-4 py-2.5 text-[#a0a0a6] text-xs">{stock.funds.join(", ")}</td>
                     <td className="px-4 py-2.5 text-right text-[#ececed] font-medium">{stock.combinedWeight}%</td>
+                    <td className="px-4 py-2.5 text-right text-[#ececed]">
+                      INR {INR.format(Math.round((totalInvested * stock.combinedWeight) / 100))}
+                    </td>
                   </tr>
                 ))}
               </tbody>

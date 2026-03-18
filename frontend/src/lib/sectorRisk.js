@@ -8,12 +8,13 @@ export function computeSectorExposure(portfolio) {
 
   for (const item of portfolio) {
     const amount = Number(item?.amount) || 0;
-    if (!amount || !item?.fund?.sectorWeights) {
+    const weights = item?.fund?.normalizedSectorWeights || item?.fund?.sectorWeights;
+    if (!amount || !weights) {
       continue;
     }
 
     const portfolioWeight = amount / totalInvested;
-    for (const [sector, sectorPct] of Object.entries(item.fund.sectorWeights)) {
+    for (const [sector, sectorPct] of Object.entries(weights)) {
       const numericSectorPct = Number(sectorPct) || 0;
       sectorTotals[sector] = (sectorTotals[sector] || 0) + numericSectorPct * portfolioWeight;
     }

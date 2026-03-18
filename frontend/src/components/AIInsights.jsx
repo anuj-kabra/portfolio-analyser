@@ -2,6 +2,8 @@ const CARDS = [
   { key: "concentrated", label: "Concentrated" },
   { key: "redundant", label: "Redundant" },
   { key: "recommendation", label: "Recommendation" },
+  { key: "ghostInsight", label: "Ghost Portfolio Insight" },
+  { key: "riskInsight", label: "Rupee-at-Risk Insight" },
 ];
 
 export default function AIInsights({ insights, loading, error }) {
@@ -42,7 +44,9 @@ export default function AIInsights({ insights, loading, error }) {
         {CARDS.map((card) => (
           <div key={card.key} className="card p-4">
             <h3 className="text-xs font-medium text-[#5c5c63] uppercase tracking-wide mb-1">{card.label}</h3>
-            <p className="text-sm text-[#a0a0a6] leading-relaxed">{insights[card.key]}</p>
+            <p className="text-sm text-[#a0a0a6] leading-relaxed">
+              {insights[card.key] || "Insight unavailable for this section right now."}
+            </p>
           </div>
         ))}
       </div>

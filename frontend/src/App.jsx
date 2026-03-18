@@ -6,10 +6,18 @@ import SectorChart from "./components/SectorChart";
 import CrashSimulator from "./components/CrashSimulator";
 import ELI5Section from "./components/ELI5Section";
 import AIInsights from "./components/AIInsights";
+import RupeeAtRisk from "./components/RupeeAtRisk";
+import GhostPortfolio from "./components/GhostPortfolio";
+import CrashReplay from "./components/CrashReplay";
+import ContagionMap from "./components/ContagionMap";
+import FundSwapLab from "./components/FundSwapLab";
 import { DEMO_PORTFOLIOS } from "./data/demoPortfolios";
 import { analyseOverlap } from "./lib/overlap";
 import { computeSectorExposure } from "./lib/sectorRisk";
 import { generateELI5 } from "./lib/eli5";
+import { buildGhostPortfolio } from "./lib/ghostPortfolio";
+import { replayAllCrashes } from "./lib/crashReplay";
+import { computeRupeeAtRisk } from "./lib/rupeeAtRisk";
 
 function getApiBaseUrl() {
   return import.meta.env.VITE_API_BASE_URL ?? "";
@@ -24,6 +32,8 @@ export default function App() {
   const [geminiInsights, setGeminiInsights] = useState(null);
   const [fundsError, setFundsError] = useState("");
   const [insightsError, setInsightsError] = useState("");
+  const [resultPage, setResultPage] = useState("overview");
+  const [deepTab, setDeepTab] = useState("var");
 
   useEffect(() => {
     async function loadFunds() {
@@ -50,15 +60,20 @@ export default function App() {
       const sectorExposure = computeSectorExposure(safePortfolio);
       const eli5 = generateELI5(safePortfolio, overlap, sectorExposure);
       const totalInvested = safePortfolio.reduce((sum, item) => sum + item.amount, 0);
+      const ghost = buildGhostPortfolio(safePortfolio);
+      const crashReplays = replayAllCrashes(totalInvested, sectorExposure);
+      const rupeeAtRisk = computeRupeeAtRisk(totalInvested, sectorExposure);
 
-      setResults({ overlap, sectorExposure, eli5, totalInvested });
+      setResults({ overlap, sectorExposure, eli5, totalInvested, ghost, crashReplays, rupeeAtRisk, portfolio: safePortfolio });
+      setResultPage("overview");
+      setDeepTab("var");
       setTimeout(() => {
         document.getElementById("results")?.scrollIntoView({ behavior: "smooth" });
       }, 100);
       setIsAnalysing(false);
 
       setGeminiLoading(true);
-      const insights = await fetchGeminiInsights(safePortfolio, overlap, sectorExposure);
+      const insights = await fetchGeminiInsights(safePortfolio, overlap, sectorExposure, ghost, rupeeAtRisk);
       if (!insights) {
         setInsightsError("AI unavailable");
       }
@@ -71,7 +86,7 @@ export default function App() {
     }
   }
 
-  async function fetchGeminiInsights(port, overlap, sectorExposure) {
+  async function fetchGeminiInsights(port, overlap, sectorExposure, ghost, rupeeAtRisk) {
     try {
       const categories = new Set(port.map((item) => item.fund.category));
       const selectedIds = new Set(port.map((item) => item.fund.id));
@@ -90,14 +105,19 @@ export default function App() {
         .slice(0, 5)
         .map(([sector, data]) => `- ${sector}: ${data.weightPct}% (INR ${data.rupeeAmount.toLocaleString("en-IN")})`)
         .join("\n");
+      const ghostSummary = `Unique ${ghost.totalStocks}, redundant ${ghost.redundantStocks}, HHI ${ghost.hhi}, effective TER ${ghost.effectiveTER}%`;
+      const varSummary = `VaR95 INR ${rupeeAtRisk.var95.rupees.toLocaleString("en-IN")} (${rupeeAtRisk.var95.pct}%)`;
 
       const res = await fetch(`${getApiBaseUrl()}/api/insights`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ portfolioSummary, overlapSummary, sectorSummary, availableFunds }),
+        body: JSON.stringify({ portfolioSummary, overlapSummary, sectorSummary, availableFunds, ghostSummary, varSummary }),
       });
 
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      if (!res.ok) {
+        console.warn(`AI insights request failed with HTTP ${res.status}`);
+        return null;
+      }
       return await res.json();
     } catch (error) {
       console.error("Gemini insights failed:", error);
@@ -119,6 +139,13 @@ export default function App() {
   }
 
   const hasResults = useMemo(() => Boolean(results?.overlap), [results]);
+  const DEEP_TABS = [
+    { id: "var", label: "Rupee-at-Risk" },
+    { id: "ghost", label: "Ghost Portfolio" },
+    { id: "replay", label: "Crash Replay" },
+    { id: "contagion", label: "Contagion Map" },
+    { id: "swap", label: "Fund Swap Lab" },
+  ];
 
   return (
     <div className="min-h-screen bg-[#0a0a0b]">
@@ -166,11 +193,63 @@ export default function App() {
         {/* Results */}
         {hasResults ? (
           <section id="results" className="mt-14 space-y-10">
-            <div className="animate-in"><OverlapMatrix overlap={results.overlap} /></div>
-            <div className="animate-in delay-1"><SectorChart sectorExposure={results.sectorExposure} /></div>
-            <div className="animate-in delay-2"><CrashSimulator totalInvested={results.totalInvested} sectorExposure={results.sectorExposure} /></div>
-            <div className="animate-in delay-3"><ELI5Section eli5={results.eli5} /></div>
-            <div className="animate-in delay-4"><AIInsights insights={geminiInsights} loading={geminiLoading} error={insightsError} /></div>
+            <div className="card p-1 inline-flex gap-1">
+              <button
+                type="button"
+                onClick={() => setResultPage("overview")}
+                className={`px-3 py-1.5 text-xs rounded-md ${
+                  resultPage === "overview" ? "bg-white text-[#0a0a0b]" : "text-[#a0a0a6] hover:bg-white/[0.04]"
+                }`}
+              >
+                Overview
+              </button>
+              <button
+                type="button"
+                onClick={() => setResultPage("deep")}
+                className={`px-3 py-1.5 text-xs rounded-md ${
+                  resultPage === "deep" ? "bg-white text-[#0a0a0b]" : "text-[#a0a0a6] hover:bg-white/[0.04]"
+                }`}
+              >
+                Deep Analysis
+              </button>
+            </div>
+
+            {resultPage === "overview" ? (
+              <>
+                <div className="animate-in"><OverlapMatrix overlap={results.overlap} totalInvested={results.totalInvested} /></div>
+                <div className="animate-in delay-1"><SectorChart sectorExposure={results.sectorExposure} /></div>
+                <div className="animate-in delay-2"><CrashSimulator totalInvested={results.totalInvested} sectorExposure={results.sectorExposure} /></div>
+                <div className="animate-in delay-3"><ELI5Section eli5={results.eli5} /></div>
+                <div className="animate-in delay-4"><AIInsights insights={geminiInsights} loading={geminiLoading} error={insightsError} /></div>
+              </>
+            ) : (
+              <div className="space-y-6">
+                <div className="flex flex-wrap gap-2">
+                  {DEEP_TABS.map((tab) => (
+                    <button
+                      key={tab.id}
+                      type="button"
+                      onClick={() => setDeepTab(tab.id)}
+                      className={`text-xs px-3 py-1.5 rounded-lg border ${
+                        deepTab === tab.id
+                          ? "border-white/30 bg-white/[0.12] text-white"
+                          : "border-white/[0.08] bg-white/[0.03] text-[#a0a0a6]"
+                      }`}
+                    >
+                      {tab.label}
+                    </button>
+                  ))}
+                </div>
+
+                {deepTab === "var" ? <RupeeAtRisk varResult={results.rupeeAtRisk} /> : null}
+                {deepTab === "ghost" ? <GhostPortfolio ghost={results.ghost} /> : null}
+                {deepTab === "replay" ? <CrashReplay replays={results.crashReplays} /> : null}
+                {deepTab === "contagion" ? (
+                  <ContagionMap totalInvested={results.totalInvested} sectorExposure={results.sectorExposure} />
+                ) : null}
+                {deepTab === "swap" ? <FundSwapLab portfolio={results.portfolio} allFunds={allFunds} /> : null}
+              </div>
+            )}
           </section>
         ) : null}
 

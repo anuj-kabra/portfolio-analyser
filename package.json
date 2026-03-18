@@ -1,0 +1,11 @@
+{
+  "name": "mf-portfolio-analyzer",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "setup": "npm --prefix backend install && npm --prefix frontend install",
+    "dev": "bash ./start.sh",
+    "start": "npm run dev",
+    "this": "npm run setup && npm run dev"
+  }
+}
