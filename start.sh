@@ -1,11 +1,14 @@
 #!/bin/bash
 
+# Get the directory where the script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 # Start backend
-cd /Users/akashshinde/Projs/portfolio-analyser/backend
+cd "$SCRIPT_DIR/backend"
 npm run dev &
 
 # Start frontend
-cd /Users/akashshinde/Projs/portfolio-analyser/frontend
+cd "$SCRIPT_DIR/frontend"
 npm run dev &
 
 # Wait so script keeps running
