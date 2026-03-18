@@ -155,7 +155,7 @@ export default function App() {
       <main className="max-w-4xl mx-auto px-5 sm:px-8 py-12 sm:py-20">
         {/* Header */}
         <header className="mb-14 animate-in">
-          <Card className="w-full h-[500px] bg-[#0a0a0b] relative overflow-hidden">
+          <Card className="w-full h-[500px] bg-[#0a0a0b] border-none relative overflow-hidden">
             <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="#ececed" />
             <div className="flex h-full">
               <div className="flex-1 p-8 relative z-10 flex flex-col justify-center">
@@ -174,9 +174,9 @@ export default function App() {
                 className="flex-1"
                 style={{
                   filter: 'brightness(1.4)',
-                  WebkitMaskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent), linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)',
+                  WebkitMaskImage: 'linear-gradient(to right, transparent, black 25%, black 75%, transparent), linear-gradient(to bottom, transparent, black 10%, black 85%, transparent)',
                   WebkitMaskComposite: 'source-in',
-                  maskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent), linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)',
+                  maskImage: 'linear-gradient(to right, transparent, black 25%, black 75%, transparent), linear-gradient(to bottom, transparent, black 10%, black 85%, transparent)',
                   maskComposite: 'intersect',
                 }}
               >
@@ -222,18 +222,16 @@ export default function App() {
               <button
                 type="button"
                 onClick={() => setResultPage("overview")}
-                className={`px-3 py-1.5 text-xs rounded-md ${
-                  resultPage === "overview" ? "bg-white text-[#0a0a0b]" : "text-[#a0a0a6] hover:bg-white/[0.04]"
-                }`}
+                className={`px-3 py-1.5 text-xs rounded-md ${resultPage === "overview" ? "bg-white text-[#0a0a0b]" : "text-[#a0a0a6] hover:bg-white/[0.04]"
+                  }`}
               >
                 Overview
               </button>
               <button
                 type="button"
                 onClick={() => setResultPage("deep")}
-                className={`px-3 py-1.5 text-xs rounded-md ${
-                  resultPage === "deep" ? "bg-white text-[#0a0a0b]" : "text-[#a0a0a6] hover:bg-white/[0.04]"
-                }`}
+                className={`px-3 py-1.5 text-xs rounded-md ${resultPage === "deep" ? "bg-white text-[#0a0a0b]" : "text-[#a0a0a6] hover:bg-white/[0.04]"
+                  }`}
               >
                 Deep Analysis
               </button>
@@ -255,11 +253,10 @@ export default function App() {
                       key={tab.id}
                       type="button"
                       onClick={() => setDeepTab(tab.id)}
-                      className={`text-xs px-3 py-1.5 rounded-lg border ${
-                        deepTab === tab.id
-                          ? "border-white/30 bg-white/[0.12] text-white"
-                          : "border-white/[0.08] bg-white/[0.03] text-[#a0a0a6]"
-                      }`}
+                      className={`text-xs px-3 py-1.5 rounded-lg border ${deepTab === tab.id
+                        ? "border-white/30 bg-white/[0.12] text-white"
+                        : "border-white/[0.08] bg-white/[0.03] text-[#a0a0a6]"
+                        }`}
                     >
                       {tab.label}
                     </button>
@@ -278,9 +275,6 @@ export default function App() {
           </section>
         ) : null}
 
-        <footer className="mt-20 pt-6 border-t border-white/[0.04] text-center text-xs text-[#3a3a40]">
-          Built with React &amp; Gemini AI · Data for educational purposes only
-        </footer>
       </main>
     </div>
   );
