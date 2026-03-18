@@ -1,0 +1,1284 @@
+{
+  "constituents": [
+    {
+      "ticker": "ITC",
+      "title": "ITC Ltd",
+      "type": "Equity",
+      "weight": 5.03602741343366
+    },
+    {
+      "ticker": "BAJAJHLDNG",
+      "title": "Bajaj Holdings and Investment Ltd",
+      "type": "Equity",
+      "weight": 4.85007910550576
+    },
+    {
+      "ticker": "IEX",
+      "title": "Indian Energy Exchange Ltd",
+      "type": "Equity",
+      "weight": 0.755746990321929
+    },
+    {
+      "ticker": "MCX",
+      "title": "Multi Commodity Exchange of India Ltd",
+      "type": "Equity",
+      "weight": 0
+    },
+    {
+      "ticker": "HDFCBANK",
+      "title": "HDFC Bank Ltd",
+      "type": "Equity",
+      "weight": 7.73105038410523
+    },
+    {
+      "ticker": "AXISBANK",
+      "title": "Axis Bank Ltd",
+      "type": "Equity",
+      "weight": 3.42692709773915
+    },
+    {
+      "ticker": "BALKRISIND",
+      "title": "Balkrishna Industries Ltd",
+      "type": "Equity",
+      "weight": 0.516022671437666
+    },
+    {
+      "ticker": "ICICIBANK",
+      "title": "ICICI Bank Ltd",
+      "type": "Equity",
+      "weight": 5.06614215833595
+    },
+    {
+      "ticker": "CDSL",
+      "title": "Central Depository Services (India) Ltd",
+      "type": "Equity",
+      "weight": 0.214596644265038
+    },
+    {
+      "ticker": "ZYDUSWELL",
+      "title": "Zydus Wellness Ltd",
+      "type": "Equity",
+      "weight": 0.632885758331261
+    },
+    {
+      "ticker": "ZYDUSLIFE",
+      "title": "Zydus Lifesciences Ltd",
+      "type": "Equity",
+      "weight": 1.29437851319402
+    },
+    {
+      "ticker": "DRREDDY",
+      "title": "Dr Reddy's Laboratories Ltd",
+      "type": "Equity",
+      "weight": 1.3193154288182
+    },
+    {
+      "ticker": "LUPIN",
+      "title": "Lupin Ltd",
+      "type": "Equity",
+      "weight": 0.00838006276337409
+    },
+    {
+      "ticker": "SUNPHARMA",
+      "title": "Sun Pharmaceutical Industries Ltd",
+      "type": "Equity",
+      "weight": 0.0944621262655598
+    },
+    {
+      "ticker": "ICRA",
+      "title": "ICRA Ltd",
+      "type": "Equity",
+      "weight": 0.118401002149587
+    },
+    {
+      "ticker": "INFY",
+      "title": "Infosys Ltd",
+      "type": "Equity",
+      "weight": 2.00396428475871
+    },
+    {
+      "ticker": null,
+      "title": "Amazon.Com Inc",
+      "type": "Equity",
+      "weight": 1.96696381795931
+    },
+    {
+      "ticker": null,
+      "title": "Microsoft Corporation",
+      "type": "Equity",
+      "weight": 1.95078014064131
+    },
+    {
+      "ticker": null,
+      "title": "Facebook Inc",
+      "type": "Equity",
+      "weight": 2.59604504790725
+    },
+    {
+      "ticker": "HCLTECH",
+      "title": "HCL Technologies Ltd",
+      "type": "Equity",
+      "weight": 2.8734974141702
+    },
+    {
+      "ticker": "MARUTI",
+      "title": "Maruti Suzuki India Ltd",
+      "type": "Equity",
+      "weight": 3.16614279213849
+    },
+    {
+      "ticker": "TATASTEEL",
+      "title": "Tata Steel Ltd",
+      "type": "Equity",
+      "weight": 0.0997729877830796
+    },
+    {
+      "ticker": "CIPLA",
+      "title": "Cipla Ltd",
+      "type": "Equity",
+      "weight": 1.2935745098389
+    },
+    {
+      "ticker": null,
+      "title": "Alphabet Inc.",
+      "type": "Equity",
+      "weight": 3.99221862402623
+    },
+    {
+      "ticker": "BHARTIARTL",
+      "title": "Bharti Airtel Ltd",
+      "type": "Equity",
+      "weight": 2.96299943413404
+    },
+    {
+      "ticker": "KOTAKBANK",
+      "title": "Kotak Mahindra Bank Ltd",
+      "type": "Equity",
+      "weight": 3.80731602696571
+    },
+    {
+      "ticker": "POWERGRID",
+      "title": "Power Grid Corporation of India Ltd",
+      "type": "Equity",
+      "weight": 6.92081641265604
+    },
+    {
+      "ticker": "COALINDIA",
+      "title": "Coal India Ltd",
+      "type": "Equity",
+      "weight": 5.17806338803121
+    },
+    {
+      "ticker": "MAHSCOOTER",
+      "title": "Maharashtra Scooters Ltd",
+      "type": "Equity",
+      "weight": 0.0795669101331194
+    },
+    {
+      "ticker": "IGL",
+      "title": "Indraprastha Gas Ltd",
+      "type": "Equity",
+      "weight": 0.0036415527171112
+    },
+    {
+      "ticker": "SBIN",
+      "title": "State Bank of India",
+      "type": "Equity",
+      "weight": 0
+    },
+    {
+      "ticker": "NMDC",
+      "title": "NMDC Ltd",
+      "type": "Equity",
+      "weight": 0.00497276894489683
+    },
+    {
+      "ticker": null,
+      "title": "Clearing Corporation of India Ltd",
+      "type": "Others",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "Net Receivables / (Payables)",
+      "type": "Others",
+      "weight": -0.0555892269720845
+    },
+    {
+      "ticker": "BAJFINANCE",
+      "title": "Bajaj Finance Ltd",
+      "type": "Equity",
+      "weight": 0.147934978647219
+    },
+    {
+      "ticker": "RELIANCE",
+      "title": "Reliance Industries Ltd",
+      "type": "Equity",
+      "weight": 0.685408837989079
+    },
+    {
+      "ticker": "INDUSINDBK",
+      "title": "Indusind Bank Ltd",
+      "type": "Equity",
+      "weight": 0.0595130821457371
+    },
+    {
+      "ticker": "TECHM",
+      "title": "Tech Mahindra Ltd",
+      "type": "Equity",
+      "weight": 0
+    },
+    {
+      "ticker": "BANKBARODA",
+      "title": "Bank of Baroda Ltd",
+      "type": "Equity",
+      "weight": 0.0185179983432064
+    },
+    {
+      "ticker": "TCS",
+      "title": "Tata Consultancy Services Ltd",
+      "type": "Equity",
+      "weight": 2.03876636773163
+    },
+    {
+      "ticker": "UNITDSPR",
+      "title": "United Spirits Ltd",
+      "type": "Equity",
+      "weight": 0.000370270583500578
+    },
+    {
+      "ticker": "BANDHANBNK",
+      "title": "Bandhan Bank Ltd",
+      "type": "Equity",
+      "weight": 0
+    },
+    {
+      "ticker": "INDUSTOWER",
+      "title": "Indus Towers Ltd",
+      "type": "Equity",
+      "weight": 0.0240890399347893
+    },
+    {
+      "ticker": "LT",
+      "title": "Larsen and Toubro Ltd",
+      "type": "Equity",
+      "weight": 0.0974266000037894
+    },
+    {
+      "ticker": "EIDPARRY",
+      "title": "E I D-Parry (India) Ltd",
+      "type": "Equity",
+      "weight": 0.47653973068797
+    },
+    {
+      "ticker": "SWARAJENG",
+      "title": "Swaraj Engines Ltd",
+      "type": "Equity",
+      "weight": 0.0126651012118998
+    },
+    {
+      "ticker": "M&M",
+      "title": "Mahindra and Mahindra Ltd",
+      "type": "Equity",
+      "weight": 3.5364327420345
+    },
+    {
+      "ticker": "BHEL",
+      "title": "Bharat Heavy Electricals Ltd",
+      "type": "Equity",
+      "weight": 0.000932491940222036
+    },
+    {
+      "ticker": "TITAN",
+      "title": "Titan Company Ltd",
+      "type": "Equity",
+      "weight": 0.0967983094441782
+    },
+    {
+      "ticker": "DLF",
+      "title": "DLF Ltd",
+      "type": "Equity",
+      "weight": 0.0169208666088633
+    },
+    {
+      "ticker": "JINDALSTEL",
+      "title": "Jindal Steel Ltd",
+      "type": "Equity",
+      "weight": 0
+    },
+    {
+      "ticker": "BAJAJFINSV",
+      "title": "Bajaj Finserv Ltd",
+      "type": "Equity",
+      "weight": 0.0472910989586301
+    },
+    {
+      "ticker": "HINDALCO",
+      "title": "Hindalco Industries Ltd",
+      "type": "Equity",
+      "weight": 0.0848568410463416
+    },
+    {
+      "ticker": "BEL",
+      "title": "Bharat Electronics Ltd",
+      "type": "Equity",
+      "weight": 0.00165202801678924
+    },
+    {
+      "ticker": "HINDPETRO",
+      "title": "Hindustan Petroleum Corp Ltd",
+      "type": "Equity",
+      "weight": 0.00569133670169226
+    },
+    {
+      "ticker": "PNB",
+      "title": "Punjab National Bank",
+      "type": "Equity",
+      "weight": 0.0402628105966579
+    },
+    {
+      "ticker": "GMRAIRPORT",
+      "title": "GMR Airports Ltd",
+      "type": "Equity",
+      "weight": 0
+    },
+    {
+      "ticker": "SAIL",
+      "title": "Steel Authority of India Ltd",
+      "type": "Equity",
+      "weight": 0.000696147429771959
+    },
+    {
+      "ticker": "NTPC",
+      "title": "NTPC Ltd",
+      "type": "Equity",
+      "weight": 0
+    },
+    {
+      "ticker": "ONGC",
+      "title": "Oil and Natural Gas Corporation Ltd",
+      "type": "Equity",
+      "weight": 0
+    },
+    {
+      "ticker": "JSWSTEEL",
+      "title": "JSW Steel Ltd",
+      "type": "Equity",
+      "weight": 0.0195847143010241
+    },
+    {
+      "ticker": "NH",
+      "title": "Narayana Hrudayalaya Ltd",
+      "type": "Equity",
+      "weight": 0.272196103083333
+    },
+    {
+      "ticker": null,
+      "title": "Punjab National Bank (05/12/2025)",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "Kotak Mahindra Bank Limited (11/12/2025)",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "Kotak Mahindra Bank Limited (04/12/2025)",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "Union Bank of India (05/12/2025)",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "364 Days Tbill (MD 04/12/2025)",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "National Bank For Agriculture and Rural Development (22/01/2026)",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "National Bank For Agriculture and Rural Development (20/01/2026)",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": "JIOFIN",
+      "title": "Jio Financial Services Ltd",
+      "type": "Equity",
+      "weight": 0.115564570079641
+    },
+    {
+      "ticker": "GODREJPROP",
+      "title": "Godrej Properties Ltd",
+      "type": "Equity",
+      "weight": 0.000567286413989219
+    },
+    {
+      "ticker": "GAIL",
+      "title": "Gail (India) Ltd",
+      "type": "Equity",
+      "weight": 0.000556858354908535
+    },
+    {
+      "ticker": "INDHOTEL",
+      "title": "Indian Hotels Company Ltd",
+      "type": "Equity",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "Punjab National Bank (08/01/2026)",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "Union Bank of India (16/01/2026) #",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": "VEDL",
+      "title": "Vedanta Ltd",
+      "type": "Equity",
+      "weight": 0
+    },
+    {
+      "ticker": "EICHERMOT",
+      "title": "Eicher Motors Ltd",
+      "type": "Equity",
+      "weight": 0.0127687859136163
+    },
+    {
+      "ticker": "GRASIM",
+      "title": "Grasim Industries Ltd",
+      "type": "Equity",
+      "weight": 0.0184563238223577
+    },
+    {
+      "ticker": "VBL",
+      "title": "Varun Beverages Ltd",
+      "type": "Equity",
+      "weight": 0
+    },
+    {
+      "ticker": "POLYCAB",
+      "title": "Polycab India Ltd",
+      "type": "Equity",
+      "weight": 0.00168361013857646
+    },
+    {
+      "ticker": "AUROPHARMA",
+      "title": "Aurobindo Pharma Ltd",
+      "type": "Equity",
+      "weight": 0.00289981977192939
+    },
+    {
+      "ticker": "LICHSGFIN",
+      "title": "LIC Housing Finance Ltd",
+      "type": "Equity",
+      "weight": 0.0126172811124012
+    },
+    {
+      "ticker": "TATACONSUM",
+      "title": "Tata Consumer Products Ltd",
+      "type": "Equity",
+      "weight": 0.0131817370532114
+    },
+    {
+      "ticker": "IRCTC",
+      "title": "Indian Railway Catering and Tourism Corporation Ltd",
+      "type": "Equity",
+      "weight": 0
+    },
+    {
+      "ticker": "IIFL",
+      "title": "IIFL Finance Ltd",
+      "type": "Equity",
+      "weight": 0
+    },
+    {
+      "ticker": "MGL",
+      "title": "Mahanagar Gas Ltd",
+      "type": "Equity",
+      "weight": 0.000276641510183293
+    },
+    {
+      "ticker": null,
+      "title": "Indian Bank (06/03/2026)",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "Punjab National Bank (18/03/2026) #",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "Canara Bank (04/03/2026)",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "364 Days Tbill (MD 29/01/2026)",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "Union Bank of India (29/01/2026)",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "HDFC Bank Limited (24/03/2026) #",
+      "type": "Debt",
+      "weight": 0.148453253183529
+    },
+    {
+      "ticker": null,
+      "title": "Kotak Mahindra Bank Limited (13/03/2026)",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "Parag Parikh Liquid Fund- Direct Plan- Growth",
+      "type": "Others",
+      "weight": 0.57132616959094
+    },
+    {
+      "ticker": "NESCO",
+      "title": "Nesco Ltd",
+      "type": "Equity",
+      "weight": 0.0126951191248249
+    },
+    {
+      "ticker": "DIVISLAB",
+      "title": "Divi's Laboratories Ltd",
+      "type": "Equity",
+      "weight": 0.016659345784347
+    },
+    {
+      "ticker": "TATAPOWER",
+      "title": "Tata Power Company Ltd",
+      "type": "Equity",
+      "weight": 0
+    },
+    {
+      "ticker": "ASIANPAINT",
+      "title": "Asian Paints Ltd",
+      "type": "Equity",
+      "weight": 0.000265468589739703
+    },
+    {
+      "ticker": null,
+      "title": "Embassy Office Parks REIT",
+      "type": "Others",
+      "weight": 2.39443029439176
+    },
+    {
+      "ticker": null,
+      "title": "Mindspace Business Parks REIT",
+      "type": "Others",
+      "weight": 0.0299728488126565
+    },
+    {
+      "ticker": null,
+      "title": "Brookfield India Real Estate Trust",
+      "type": "Others",
+      "weight": 1.10420006310004
+    },
+    {
+      "ticker": null,
+      "title": "Small Industries Dev Bank of India (05/05/2026) #",
+      "type": "Debt",
+      "weight": 0.349299533230914
+    },
+    {
+      "ticker": null,
+      "title": "Indian Bank (06/05/2026)",
+      "type": "Debt",
+      "weight": 0.147053807654902
+    },
+    {
+      "ticker": null,
+      "title": "HDFC Bank Limited (19/05/2026)",
+      "type": "Debt",
+      "weight": 0.0916834209512389
+    },
+    {
+      "ticker": null,
+      "title": "Small Industries Dev Bank of India (13/01/2026)",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "Punjab National Bank (16/01/2026)",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "Indian Bank (08/01/2026) #",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "Bajaj Finance Limited (06/05/2026)",
+      "type": "Debt",
+      "weight": 0.146954145204545
+    },
+    {
+      "ticker": null,
+      "title": "Bajaj Finance Limited (26/05/2026)",
+      "type": "Debt",
+      "weight": 0.146405778269173
+    },
+    {
+      "ticker": null,
+      "title": "364 Days Tbill (MD 16/04/2026)",
+      "type": "Debt",
+      "weight": 0.0739988479869881
+    },
+    {
+      "ticker": null,
+      "title": "Bajaj Finance Limited (07/05/2026)",
+      "type": "Debt",
+      "weight": 0.0734619519166054
+    },
+    {
+      "ticker": null,
+      "title": "Axis Bank Limited (11/06/2026)",
+      "type": "Debt",
+      "weight": 0.219140968953991
+    },
+    {
+      "ticker": null,
+      "title": "Axis Bank Limited (25/06/2026)",
+      "type": "Debt",
+      "weight": 0.127494269667944
+    },
+    {
+      "ticker": null,
+      "title": "HDFC Bank Limited (24/06/2026) #",
+      "type": "Debt",
+      "weight": 0.291470210196026
+    },
+    {
+      "ticker": null,
+      "title": "Bajaj Finance Limited (18/06/2026)",
+      "type": "Debt",
+      "weight": 0.218601540354975
+    },
+    {
+      "ticker": null,
+      "title": "Union Bank of India (25/06/2026)",
+      "type": "Debt",
+      "weight": 0.400735934646388
+    },
+    {
+      "ticker": null,
+      "title": "Indian Bank (28/07/2026)",
+      "type": "Debt",
+      "weight": 0.217263471402651
+    },
+    {
+      "ticker": null,
+      "title": "Bank of Baroda (23/07/2026)",
+      "type": "Debt",
+      "weight": 0.235583262137188
+    },
+    {
+      "ticker": null,
+      "title": "Small Industries Dev Bank of India (09/07/2026)",
+      "type": "Debt",
+      "weight": 0.108975451977238
+    },
+    {
+      "ticker": null,
+      "title": "Axis Bank Limited (12/06/2026)",
+      "type": "Debt",
+      "weight": 0.146066270459961
+    },
+    {
+      "ticker": null,
+      "title": "Bank of Baroda (25/05/2026)",
+      "type": "Debt",
+      "weight": 0.073285494259733
+    },
+    {
+      "ticker": null,
+      "title": "Axis Bank Limited (11/08/2026)",
+      "type": "Debt",
+      "weight": 0.469381910934989
+    },
+    {
+      "ticker": null,
+      "title": "National Bank For Agriculture and Rural Development (25/06/2026)",
+      "type": "Debt",
+      "weight": 0.327781009859513
+    },
+    {
+      "ticker": null,
+      "title": "364 Days Tbill (MD 30/07/2026)",
+      "type": "Debt",
+      "weight": 0.0801549036929974
+    },
+    {
+      "ticker": "ETERNAL",
+      "title": "Eternal Ltd",
+      "type": "Equity",
+      "weight": 0.11842945585365
+    },
+    {
+      "ticker": "NESTLEIND",
+      "title": "Nestle India Ltd",
+      "type": "Equity",
+      "weight": 0.0169817217822127
+    },
+    {
+      "ticker": "TRENT",
+      "title": "Trent Ltd",
+      "type": "Equity",
+      "weight": 0.000116198372613338
+    },
+    {
+      "ticker": "FEDERALBNK",
+      "title": "Federal Bank Ltd",
+      "type": "Equity",
+      "weight": 0
+    },
+    {
+      "ticker": "DABUR",
+      "title": "Dabur India Ltd",
+      "type": "Equity",
+      "weight": 0.00202758711596645
+    },
+    {
+      "ticker": "IOC",
+      "title": "Indian Oil Corporation Ltd",
+      "type": "Equity",
+      "weight": 0
+    },
+    {
+      "ticker": "PFC",
+      "title": "Power Finance Corporation Ltd",
+      "type": "Equity",
+      "weight": 0
+    },
+    {
+      "ticker": "IDFCFIRSTB",
+      "title": "IDFC First Bank Ltd",
+      "type": "Equity",
+      "weight": 0.00812226624567232
+    },
+    {
+      "ticker": "SHRIRAMFIN",
+      "title": "Shriram Finance Ltd",
+      "type": "Equity",
+      "weight": 0.00490841292314175
+    },
+    {
+      "ticker": "HAL",
+      "title": "Hindustan Aeronautics Ltd",
+      "type": "Equity",
+      "weight": 8.74467240051658e-05
+    },
+    {
+      "ticker": null,
+      "title": "Kotak Mahindra Bank Limited (24/09/2026)",
+      "type": "Debt",
+      "weight": 0.501576606707058
+    },
+    {
+      "ticker": null,
+      "title": "HDFC Bank Limited (10/09/2026)",
+      "type": "Debt",
+      "weight": 0.359064516726339
+    },
+    {
+      "ticker": null,
+      "title": "National Bank For Agriculture and Rural Development (18/09/2026)",
+      "type": "Debt",
+      "weight": 0.358455220131482
+    },
+    {
+      "ticker": null,
+      "title": "Bank of Baroda (16/09/2026)",
+      "type": "Debt",
+      "weight": 0.46641058447222
+    },
+    {
+      "ticker": null,
+      "title": "Small Industries Dev Bank of India (24/09/2026)",
+      "type": "Debt",
+      "weight": 0.214814814158233
+    },
+    {
+      "ticker": null,
+      "title": "Canara Bank (27/02/2026)",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "Axis Bank Limited (10/08/2026)",
+      "type": "Debt",
+      "weight": 0.0722261524294081
+    },
+    {
+      "ticker": "PNBHOUSING",
+      "title": "PNB Housing Finance Ltd",
+      "type": "Equity",
+      "weight": 0.00399312728040284
+    },
+    {
+      "ticker": null,
+      "title": "Canara Bank (12/06/2026)",
+      "type": "Debt",
+      "weight": 0.438235458558938
+    },
+    {
+      "ticker": null,
+      "title": "Small Industries Dev Bank of India (13/10/2026)",
+      "type": "Debt",
+      "weight": 0.214073826074414
+    },
+    {
+      "ticker": null,
+      "title": "Bank of Baroda (16/10/2026)",
+      "type": "Debt",
+      "weight": 0.178402713349391
+    },
+    {
+      "ticker": null,
+      "title": "HDFC Bank Limited (04/06/2026)",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "HDFC Bank Limited (12/06/2026)",
+      "type": "Debt",
+      "weight": 0.146066270459961
+    },
+    {
+      "ticker": null,
+      "title": "Kotak Mahindra Bank Limited (25/05/2026)",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "Indian Bank (12/06/2026)",
+      "type": "Debt",
+      "weight": 0.310403841179734
+    },
+    {
+      "ticker": null,
+      "title": "Canara Bank (11/11/2026)",
+      "type": "Debt",
+      "weight": 0.284129154547769
+    },
+    {
+      "ticker": null,
+      "title": "Indian Bank (30/10/2026)",
+      "type": "Debt",
+      "weight": 0.213549145730383
+    },
+    {
+      "ticker": null,
+      "title": "Punjab National Bank (26/02/2026)",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "Bank of Baroda (25/11/2026)",
+      "type": "Debt",
+      "weight": 0.12397345897776
+    },
+    {
+      "ticker": null,
+      "title": "HDFC Bank Limited (13/11/2026)",
+      "type": "Debt",
+      "weight": 0.0709826063840365
+    },
+    {
+      "ticker": null,
+      "title": "Small Industries Dev Bank of India (10/11/2026)",
+      "type": "Debt",
+      "weight": 0.0709885652749397
+    },
+    {
+      "ticker": null,
+      "title": "Kotak Securities Limited (13/02/2026)",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "ICICI Securities Limited (15/06/2026)",
+      "type": "Debt",
+      "weight": 0.0911035463802166
+    },
+    {
+      "ticker": null,
+      "title": "364 Days Tbill (MD 15/10/2026)",
+      "type": "Debt",
+      "weight": 0.252167972812971
+    },
+    {
+      "ticker": "GESHIP",
+      "title": "Great Eastern Shipping Company Ltd",
+      "type": "Equity",
+      "weight": 0.219933203499578
+    },
+    {
+      "ticker": null,
+      "title": "Bharti Airtel Ltd Partly Paid",
+      "type": "Others",
+      "weight": 0.0219115122264699
+    },
+    {
+      "ticker": "LODHA",
+      "title": "Lodha Developers Ltd",
+      "type": "Equity",
+      "weight": 0.000331239848084303
+    },
+    {
+      "ticker": null,
+      "title": "Punjab National Bank (20/03/2026)",
+      "type": "Debt",
+      "weight": 0.11140734984099
+    },
+    {
+      "ticker": null,
+      "title": "Union Bank of India (12/06/2026)",
+      "type": "Debt",
+      "weight": 0.255638952277977
+    },
+    {
+      "ticker": null,
+      "title": "Canara Bank (18/12/2026)",
+      "type": "Debt",
+      "weight": 0.317653278880353
+    },
+    {
+      "ticker": null,
+      "title": "Kotak Mahindra Bank Limited (18/12/2026)",
+      "type": "Debt",
+      "weight": 0.352907865131239
+    },
+    {
+      "ticker": null,
+      "title": "Union Bank of India (18/03/2026)",
+      "type": "Debt",
+      "weight": 0.111441166546866
+    },
+    {
+      "ticker": null,
+      "title": "Bank of Baroda (15/12/2026)",
+      "type": "Debt",
+      "weight": 0.141255061944678
+    },
+    {
+      "ticker": null,
+      "title": "Punjab National Bank (15/12/2026)",
+      "type": "Debt",
+      "weight": 0.141233907881972
+    },
+    {
+      "ticker": null,
+      "title": "Punjab National Bank (24/03/2026)",
+      "type": "Debt",
+      "weight": 0.129893989520818
+    },
+    {
+      "ticker": null,
+      "title": "Small Industries Dev Bank of India (16/12/2026)",
+      "type": "Debt",
+      "weight": 0.12346442072235
+    },
+    {
+      "ticker": null,
+      "title": "Axis Bank Limited (27/11/2026)",
+      "type": "Debt",
+      "weight": 0.0353981210355187
+    },
+    {
+      "ticker": "CIEINDIA",
+      "title": "CIE Automotive India Ltd",
+      "type": "Equity",
+      "weight": 0.0163031530806053
+    },
+    {
+      "ticker": "CMSINFO",
+      "title": "CMS Info Systems Ltd",
+      "type": "Equity",
+      "weight": 0.115028269898349
+    },
+    {
+      "ticker": null,
+      "title": "State Bank of India (27/03/2026)",
+      "type": "Debt",
+      "weight": 0.48224939097919
+    },
+    {
+      "ticker": null,
+      "title": "Union Bank of India (19/01/2027)",
+      "type": "Debt",
+      "weight": 0.210425420632764
+    },
+    {
+      "ticker": null,
+      "title": "Indian Bank (22/01/2027)",
+      "type": "Debt",
+      "weight": 0.210466983896815
+    },
+    {
+      "ticker": null,
+      "title": "National Bank For Agriculture and Rural Development (19/01/2027)",
+      "type": "Debt",
+      "weight": 0.175265133830422
+    },
+    {
+      "ticker": null,
+      "title": "National Bank For Agriculture and Rural Development (14/01/2027)",
+      "type": "Debt",
+      "weight": 0.15788178280133
+    },
+    {
+      "ticker": null,
+      "title": "Kotak Mahindra Bank Limited (08/01/2027)",
+      "type": "Debt",
+      "weight": 0.140650085545726
+    },
+    {
+      "ticker": null,
+      "title": "Canara Bank (12/01/2027)",
+      "type": "Debt",
+      "weight": 0.140562191904903
+    },
+    {
+      "ticker": null,
+      "title": "Axis Bank Limited (14/01/2027) #",
+      "type": "Debt",
+      "weight": 0.140419178523225
+    },
+    {
+      "ticker": null,
+      "title": "ICICI Bank Limited (27/01/2027)",
+      "type": "Debt",
+      "weight": 0.140222684095691
+    },
+    {
+      "ticker": null,
+      "title": "Union Bank of India (23/04/2026)",
+      "type": "Debt",
+      "weight": 0.110574073434307
+    },
+    {
+      "ticker": null,
+      "title": "Punjab National Bank (12/06/2026)",
+      "type": "Debt",
+      "weight": 0.109552868505763
+    },
+    {
+      "ticker": null,
+      "title": "National Bank For Agriculture and Rural Development (28/01/2027)",
+      "type": "Debt",
+      "weight": 0.105040200424733
+    },
+    {
+      "ticker": null,
+      "title": "National Bank For Agriculture and Rural Development (22/01/2027) #",
+      "type": "Debt",
+      "weight": 0.105101800459446
+    },
+    {
+      "ticker": null,
+      "title": "HDFC Bank Limited (21/09/2026)",
+      "type": "Debt",
+      "weight": 0.0716663146290479
+    },
+    {
+      "ticker": null,
+      "title": "HDFC Bank Limited (22/01/2027) #",
+      "type": "Debt",
+      "weight": 0.0701289952621462
+    },
+    {
+      "ticker": null,
+      "title": "364 Days Tbill (MD 15/01/2027)",
+      "type": "Debt",
+      "weight": 0.145654958015364
+    },
+    {
+      "ticker": null,
+      "title": "Punjab National Bank (05/02/2027)",
+      "type": "Debt",
+      "weight": 0.174984544555015
+    },
+    {
+      "ticker": null,
+      "title": "Axis Bank Limited (25/03/2026)",
+      "type": "Debt",
+      "weight": 0.148432099120823
+    },
+    {
+      "ticker": null,
+      "title": "Canara Bank (15/06/2026)",
+      "type": "Debt",
+      "weight": 0.072997903287515
+    },
+    {
+      "ticker": null,
+      "title": "Indian Bank (05/06/2026)",
+      "type": "Debt",
+      "weight": 0.109699457221983
+    },
+    {
+      "ticker": null,
+      "title": "Union Bank of India (27/03/2026)",
+      "type": "Debt",
+      "weight": 0.129835592389966
+    },
+    {
+      "ticker": null,
+      "title": "Axis Bank Limited (16/03/2026)",
+      "type": "Debt",
+      "weight": 0.0185792259472372
+    },
+    {
+      "ticker": null,
+      "title": "National Bank For Agriculture and Rural Development (04/02/2027)",
+      "type": "Debt",
+      "weight": 0.0349709430438921
+    },
+    {
+      "ticker": null,
+      "title": "National Bank For Agriculture and Rural Development (24/03/2026)",
+      "type": "Debt",
+      "weight": 0.0556667670399631
+    },
+    {
+      "ticker": null,
+      "title": "Small Industries Dev Bank of India (27/03/2026) #",
+      "type": "Debt",
+      "weight": 0.185468840668599
+    },
+    {
+      "ticker": null,
+      "title": "Kotak Securities Limited (07/05/2026)",
+      "type": "Debt",
+      "weight": 0.110165144546072
+    },
+    {
+      "ticker": null,
+      "title": "HDFC Securities Limited (15/05/2026)",
+      "type": "Debt",
+      "weight": 0.0733208006883347
+    },
+    {
+      "ticker": null,
+      "title": "Export Import Bank of India (27/05/2026)",
+      "type": "Debt",
+      "weight": 0.0732551784022627
+    },
+    {
+      "ticker": null,
+      "title": "HDFC Securities Limited (13/05/2026)",
+      "type": "Debt",
+      "weight": 0.0366757072451751
+    },
+    {
+      "ticker": null,
+      "title": "ICICI Securities Limited (16/03/2026)",
+      "type": "Debt",
+      "weight": 0.0185737139731517
+    },
+    {
+      "ticker": null,
+      "title": "TRP_020326",
+      "type": "Others",
+      "weight": 3.63134245549303
+    }
+  ],
+  "sectorWeights": {
+    "Private Banks": 23.86,
+    "IT Services & Consulting": 12.86,
+    "Public Banks": 8.77,
+    "Power Generation": 7.68,
+    "Four Wheelers": 6.7,
+    "Miscellaneous": 6.23,
+    "Specialized Finance": 5.7,
+    "Mining - Diversified": 5.18,
+    "FMCG - Tobacco": 5.04,
+    "Pharmaceuticals": 4.03,
+    "Investment Banking & Brokerage": 3.99,
+    "Telecom Services": 2.99,
+    "Retail - Online": 2.09,
+    "Others": 0.88,
+    "Oil & Gas - Refining & Marketing": 0.69,
+    "Packaged Foods & Meats": 0.65,
+    "G-Sec": 0.55,
+    "Auto Parts": 0.53,
+    "Sugar": 0.48,
+    "Labs & Life Sciences Services": 0.27,
+    "Logistics": 0.22,
+    "Iron & Steel": 0.12,
+    "Stock Exchanges & Ratings": 0.12,
+    "Construction & Engineering": 0.1,
+    "Precious Metals, Jewellery & Watches": 0.1,
+    "Metals - Diversified": 0.08,
+    "Diversified Chemicals": 0.02,
+    "Real Estate": 0.02,
+    "Home Financing": 0.02,
+    "Tea & Coffee": 0.01,
+    "Two Wheelers": 0.01,
+    "Heavy Machinery": 0.01,
+    "Oil & Gas - Storage & Transportation": 0.0,
+    "Industrial Machinery": 0.0,
+    "Hotels, Resorts & Cruise Lines": 0.0,
+    "FMCG - Household Products": 0.0,
+    "Cables": 0.0,
+    "Alcoholic Beverages": 0.0,
+    "Paints": 0.0,
+    "Retail - Speciality": 0.0,
+    "Insurance": 0.0,
+    "Asset Management": 0.0,
+    "Technology Hardware": 0.0,
+    "Fertilizers & Agro Chemicals": 0.0,
+    "Tour & Travel Services": 0.0,
+    "Airlines": 0.0,
+    "Oil & Gas - Exploration & Production": 0.0,
+    "Education Services": 0.0,
+    "Trucks & Buses": 0.0,
+    "Commodities Trading": 0.0,
+    "Electrical Components & Equipments": 0.0,
+    "Consumer Finance": 0.0,
+    "TV Channels & Broadcasters": 0.0,
+    "Publishing": 0.0
+  }
+}

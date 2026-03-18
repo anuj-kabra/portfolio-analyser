@@ -1,0 +1,828 @@
+{
+  "constituents": [
+    {
+      "ticker": "WELENT",
+      "title": "Welspun Enterprises Ltd",
+      "type": "Equity",
+      "weight": 1.1769885796413
+    },
+    {
+      "ticker": "AUROPHARMA",
+      "title": "Aurobindo Pharma Ltd",
+      "type": "Equity",
+      "weight": 1.110003208328762
+    },
+    {
+      "ticker": "EIDPARRY",
+      "title": "E I D-Parry (India) Ltd",
+      "type": "Equity",
+      "weight": 0.856561436602846
+    },
+    {
+      "ticker": "ICICIBANK",
+      "title": "ICICI Bank Ltd",
+      "type": "Equity",
+      "weight": 2.1270816122073
+    },
+    {
+      "ticker": "STAR",
+      "title": "Strides Pharma Science Ltd",
+      "type": "Equity",
+      "weight": 1.09499361635801
+    },
+    {
+      "ticker": "HDFCBANK",
+      "title": "HDFC Bank Ltd",
+      "type": "Equity",
+      "weight": 0.447941595036761
+    },
+    {
+      "ticker": "SUMICHEM",
+      "title": "Sumitomo Chemical India Ltd",
+      "type": "Equity",
+      "weight": 0
+    },
+    {
+      "ticker": "BASF",
+      "title": "BASF India Ltd",
+      "type": "Equity",
+      "weight": 0.0874419838787428
+    },
+    {
+      "ticker": "POLYMED",
+      "title": "Poly Medicure Ltd",
+      "type": "Equity",
+      "weight": 1.97906896181205
+    },
+    {
+      "ticker": "KPRMILL",
+      "title": "KPR Mill Ltd",
+      "type": "Equity",
+      "weight": 0.427182671561857
+    },
+    {
+      "ticker": null,
+      "title": "NCA-NET CURRENT ASSETS",
+      "type": "Others",
+      "weight": -0.600394165691648
+    },
+    {
+      "ticker": "EMBDL",
+      "title": "Embassy Developments Ltd",
+      "type": "Equity",
+      "weight": 0.173948467373735
+    },
+    {
+      "ticker": "JUSTDIAL",
+      "title": "Just Dial Ltd",
+      "type": "Equity",
+      "weight": 0.749560370870105
+    },
+    {
+      "ticker": "ARVIND",
+      "title": "Arvind Ltd",
+      "type": "Equity",
+      "weight": 1.88274894549363
+    },
+    {
+      "ticker": "HFCL",
+      "title": "HFCL Ltd",
+      "type": "Equity",
+      "weight": 2.22900920658943
+    },
+    {
+      "ticker": "WELSPUNLIV",
+      "title": "Welspun Living Ltd",
+      "type": "Equity",
+      "weight": 0.549376306920615
+    },
+    {
+      "ticker": "NITINSPIN",
+      "title": "Nitin Spinners Ltd",
+      "type": "Equity",
+      "weight": 0.374764635950514
+    },
+    {
+      "ticker": "NEWGEN",
+      "title": "Newgen Software Technologies Ltd",
+      "type": "Equity",
+      "weight": 0.0926445521126112
+    },
+    {
+      "ticker": "EPL",
+      "title": "EPL Ltd",
+      "type": "Equity",
+      "weight": 0.620058116162301
+    },
+    {
+      "ticker": "RELIANCE",
+      "title": "Reliance Industries Ltd",
+      "type": "Equity",
+      "weight": 9.35925716394948
+    },
+    {
+      "ticker": "ALIVUS",
+      "title": "Alivus Life Sciences Ltd",
+      "type": "Equity",
+      "weight": 0.575559830803961
+    },
+    {
+      "ticker": "MAHSEAMLES",
+      "title": "Maharashtra Seamless Ltd",
+      "type": "Equity",
+      "weight": 0.264297481629351
+    },
+    {
+      "ticker": "IRB",
+      "title": "IRB Infrastructure Developers Ltd",
+      "type": "Equity",
+      "weight": 0.552894468201445
+    },
+    {
+      "ticker": "AEGISLOG",
+      "title": "Aegis Logistics Ltd",
+      "type": "Equity",
+      "weight": 2.16649883228072
+    },
+    {
+      "ticker": "ANANDRATHI",
+      "title": "Anand Rathi Wealth Ltd",
+      "type": "Equity",
+      "weight": 2.63993832741745
+    },
+    {
+      "ticker": "MANINFRA",
+      "title": "Man Infraconstruction Ltd",
+      "type": "Equity",
+      "weight": 0.231878976061959
+    },
+    {
+      "ticker": "WELCORP",
+      "title": "Welspun Corp Ltd",
+      "type": "Equity",
+      "weight": 1.28901466019144
+    },
+    {
+      "ticker": "HSCL",
+      "title": "Himadri Speciality Chemical Ltd",
+      "type": "Equity",
+      "weight": 0.20050337080641
+    },
+    {
+      "ticker": "RBLBANK",
+      "title": "RBL Bank Ltd",
+      "type": "Equity",
+      "weight": 4.38334074802669
+    },
+    {
+      "ticker": "ADANIENT",
+      "title": "Adani Enterprises Ltd",
+      "type": "Equity",
+      "weight": 1.92956591212781
+    },
+    {
+      "ticker": "MOTHERSON",
+      "title": "Samvardhana Motherson International Ltd",
+      "type": "Equity",
+      "weight": 1.27928719195685
+    },
+    {
+      "ticker": "BESTAGRO",
+      "title": "Best Agrolife Ltd",
+      "type": "Equity",
+      "weight": 0.0438007282496215
+    },
+    {
+      "ticker": "PRIMO",
+      "title": "Primo Chemicals Ltd",
+      "type": "Equity",
+      "weight": 0.0308480076289966
+    },
+    {
+      "ticker": "ONGC",
+      "title": "Oil and Natural Gas Corporation Ltd",
+      "type": "Equity",
+      "weight": 0
+    },
+    {
+      "ticker": "BIKAJI",
+      "title": "Bikaji Foods International Ltd",
+      "type": "Equity",
+      "weight": 2.00138500343633
+    },
+    {
+      "ticker": "MANAPPURAM",
+      "title": "Manappuram Finance Ltd",
+      "type": "Equity",
+      "weight": 0.827539227751412
+    },
+    {
+      "ticker": "MINDACORP",
+      "title": "Minda Corporation Ltd",
+      "type": "Equity",
+      "weight": 1.43136223559177
+    },
+    {
+      "ticker": "ORIENTHOT",
+      "title": "Oriental Hotels Ltd",
+      "type": "Equity",
+      "weight": 0.0749138003476127
+    },
+    {
+      "ticker": null,
+      "title": "QUANT GILT FUND -DIRECT PLAN-GROWTH",
+      "type": "Others",
+      "weight": 0.00222683083229035
+    },
+    {
+      "ticker": "LICI",
+      "title": "Life Insurance Corporation Of India",
+      "type": "Equity",
+      "weight": 0
+    },
+    {
+      "ticker": "USHAMART",
+      "title": "Usha Martin Ltd",
+      "type": "Equity",
+      "weight": 1.62134764576356
+    },
+    {
+      "ticker": "SULA",
+      "title": "Sula Vineyards Ltd",
+      "type": "Equity",
+      "weight": 0.25955344238141
+    },
+    {
+      "ticker": "ETHOSLTD",
+      "title": "Ethos Ltd",
+      "type": "Equity",
+      "weight": 0.083666713679147
+    },
+    {
+      "ticker": "NCC",
+      "title": "NCC Ltd",
+      "type": "Equity",
+      "weight": 0.955205558435907
+    },
+    {
+      "ticker": "JIOFIN",
+      "title": "Jio Financial Services Ltd",
+      "type": "Equity",
+      "weight": 2.85376471354606
+    },
+    {
+      "ticker": "KTKBANK",
+      "title": "Karnataka Bank Ltd",
+      "type": "Equity",
+      "weight": 1.08245928535625
+    },
+    {
+      "ticker": "ADANIPOWER",
+      "title": "Adani Power Ltd",
+      "type": "Equity",
+      "weight": 3.06177450760948
+    },
+    {
+      "ticker": "GRAPHITE",
+      "title": "Graphite India Ltd",
+      "type": "Equity",
+      "weight": 0.117968876571222
+    },
+    {
+      "ticker": "JMFINANCIL",
+      "title": "JM Financial Ltd",
+      "type": "Equity",
+      "weight": 0.77207421640235
+    },
+    {
+      "ticker": "ORCHPHARMA",
+      "title": "Orchid Pharma Ltd",
+      "type": "Equity",
+      "weight": 0.776758589023573
+    },
+    {
+      "ticker": "ORISSAMINE",
+      "title": "Orissa Minerals Development Company Ltd",
+      "type": "Equity",
+      "weight": 0.159700076913536
+    },
+    {
+      "ticker": "RISHABH",
+      "title": "Rishabh Instruments Ltd",
+      "type": "Equity",
+      "weight": 0.286506846557376
+    },
+    {
+      "ticker": "RUSTOMJEE",
+      "title": "Keystone Realtors Ltd",
+      "type": "Equity",
+      "weight": 0.937238309859554
+    },
+    {
+      "ticker": "VIYASH",
+      "title": "Viyash Scientific Ltd",
+      "type": "Equity",
+      "weight": 1.73385322902296
+    },
+    {
+      "ticker": "TVSSRICHAK",
+      "title": "TVS Srichakra Ltd",
+      "type": "Equity",
+      "weight": 0.537089321207792
+    },
+    {
+      "ticker": "ASTERDM",
+      "title": "Aster DM Healthcare Ltd",
+      "type": "Equity",
+      "weight": 2.67608726281042
+    },
+    {
+      "ticker": "VTL",
+      "title": "Vardhman Textiles Ltd",
+      "type": "Equity",
+      "weight": 0
+    },
+    {
+      "ticker": "INDOCO",
+      "title": "Indoco Remedies Ltd",
+      "type": "Equity",
+      "weight": 0.30716379434298
+    },
+    {
+      "ticker": "SPAL",
+      "title": "S.P.Apparels Ltd",
+      "type": "Equity",
+      "weight": 0.205985468146053
+    },
+    {
+      "ticker": "INDIANHUME",
+      "title": "Indian Hume Pipe Company Ltd",
+      "type": "Equity",
+      "weight": 0.0924977360492936
+    },
+    {
+      "ticker": "BALRAMCHIN",
+      "title": "Balrampur Chini Mills Ltd",
+      "type": "Equity",
+      "weight": 0.32343578748871
+    },
+    {
+      "ticker": "VPRPL",
+      "title": "Vishnu Prakash R Punglia Ltd",
+      "type": "Equity",
+      "weight": 0.0813187415138236
+    },
+    {
+      "ticker": "INDIASHLTR",
+      "title": "India Shelter Finance Corporation Ltd",
+      "type": "Equity",
+      "weight": 0
+    },
+    {
+      "ticker": "KALAMANDIR",
+      "title": "Sai Silks (Kalamandir) Ltd",
+      "type": "Equity",
+      "weight": 0.085580385125149
+    },
+    {
+      "ticker": "JUBLPHARMA",
+      "title": "Jubilant Pharmova Ltd",
+      "type": "Equity",
+      "weight": 0.923258238411625
+    },
+    {
+      "ticker": "AARTIIND",
+      "title": "Aarti Industries Ltd",
+      "type": "Equity",
+      "weight": 0.6749600915247
+    },
+    {
+      "ticker": "ADANIGREEN",
+      "title": "Adani Green Energy Ltd",
+      "type": "Equity",
+      "weight": 1.86235633894518
+    },
+    {
+      "ticker": "PARKHOTELS",
+      "title": "Apeejay Surrendra Park Hotels Ltd",
+      "type": "Equity",
+      "weight": 0.482294022541647
+    },
+    {
+      "ticker": "CAPACITE",
+      "title": "Capacite Infraprojects Ltd",
+      "type": "Equity",
+      "weight": 0.177967466703075
+    },
+    {
+      "ticker": "JUNIPER",
+      "title": "Juniper Hotels Ltd",
+      "type": "Equity",
+      "weight": 0.472087774829636
+    },
+    {
+      "ticker": "EXICOM",
+      "title": "Exicom Tele-Systems Ltd",
+      "type": "Equity",
+      "weight": 0.145897558882083
+    },
+    {
+      "ticker": "PRIMESECU",
+      "title": "Prime Securities Ltd",
+      "type": "Equity",
+      "weight": 0.16494242289855
+    },
+    {
+      "ticker": "ABFRL",
+      "title": "Aditya Birla Fashion and Retail Ltd",
+      "type": "Equity",
+      "weight": 0.437644220113036
+    },
+    {
+      "ticker": "GSFC",
+      "title": "Gujarat State Fertilizers & Chemicals Ltd",
+      "type": "Equity",
+      "weight": 0.467795393865153
+    },
+    {
+      "ticker": "SUNTV",
+      "title": "Sun Tv Network Ltd",
+      "type": "Equity",
+      "weight": 3.43366682831139
+    },
+    {
+      "ticker": "PFIZER",
+      "title": "Pfizer Ltd",
+      "type": "Equity",
+      "weight": 1.67410777003475
+    },
+    {
+      "ticker": "BAYERCROP",
+      "title": "Bayer Cropscience Ltd",
+      "type": "Equity",
+      "weight": 1.75248657412303
+    },
+    {
+      "ticker": "BATAINDIA",
+      "title": "Bata India Ltd",
+      "type": "Equity",
+      "weight": 0.249838269088083
+    },
+    {
+      "ticker": "ZYDUSWELL",
+      "title": "Zydus Wellness Ltd",
+      "type": "Equity",
+      "weight": 1.25738447732856
+    },
+    {
+      "ticker": "SMSPHARMA",
+      "title": "SMS Pharmaceuticals Ltd",
+      "type": "Equity",
+      "weight": 0.259043202318994
+    },
+    {
+      "ticker": "SANOFI",
+      "title": "Sanofi India Ltd",
+      "type": "Equity",
+      "weight": 0.091638536624558
+    },
+    {
+      "ticker": "GILLETTE",
+      "title": "Gillette India Ltd",
+      "type": "Equity",
+      "weight": 0.0482623454644312
+    },
+    {
+      "ticker": "AFCONS",
+      "title": "Afcons Infrastructure Ltd",
+      "type": "Equity",
+      "weight": 0.701628903972017
+    },
+    {
+      "ticker": "OMINFRAL",
+      "title": "Om Infra Ltd",
+      "type": "Equity",
+      "weight": 0.00434011426585723
+    },
+    {
+      "ticker": "VENTIVE",
+      "title": "Ventive Hospitality Ltd",
+      "type": "Equity",
+      "weight": 2.11445434591422
+    },
+    {
+      "ticker": "ONESOURCE",
+      "title": "Onesource Specialty Pharma Ltd",
+      "type": "Equity",
+      "weight": 0.0487024320384646
+    },
+    {
+      "ticker": "STANLEY",
+      "title": "Stanley Lifestyles Ltd",
+      "type": "Equity",
+      "weight": 0
+    },
+    {
+      "ticker": "CASTROLIND",
+      "title": "Castrol India Ltd",
+      "type": "Equity",
+      "weight": 0.209575952610783
+    },
+    {
+      "ticker": "NBCC",
+      "title": "NBCC (India) Ltd",
+      "type": "Equity",
+      "weight": 1.9188273657822879
+    },
+    {
+      "ticker": "EMAMILTD",
+      "title": "Emami Ltd",
+      "type": "Equity",
+      "weight": 0.0911073228388102
+    },
+    {
+      "ticker": "VINATIORGA",
+      "title": "Vinati Organics Ltd",
+      "type": "Equity",
+      "weight": 0.192817586053324
+    },
+    {
+      "ticker": "MHRIL",
+      "title": "Mahindra Holidays and Resorts India Ltd",
+      "type": "Equity",
+      "weight": 0.102710854463775
+    },
+    {
+      "ticker": "ABLBL",
+      "title": "Aditya Birla Lifestyle Brands Ltd",
+      "type": "Equity",
+      "weight": 1.47452579659123
+    },
+    {
+      "ticker": "CGCL",
+      "title": "Capri Global Capital Ltd",
+      "type": "Equity",
+      "weight": 1.74002926731212
+    },
+    {
+      "ticker": null,
+      "title": "Suven Life Sciences Limited - Warrant",
+      "type": "Others",
+      "weight": 0.24833864786991
+    },
+    {
+      "ticker": "OSWALPUMPS",
+      "title": "Oswal Pumps Ltd",
+      "type": "Equity",
+      "weight": 0.167312092019043
+    },
+    {
+      "ticker": "DIGITIDE",
+      "title": "Digitide Solutions Ltd",
+      "type": "Equity",
+      "weight": 0.0947589203939366
+    },
+    {
+      "ticker": "GLAND",
+      "title": "Gland Pharma Ltd",
+      "type": "Equity",
+      "weight": 0.906880653417402
+    },
+    {
+      "ticker": "MARATHON",
+      "title": "Marathon Nextgen Realty Ltd",
+      "type": "Equity",
+      "weight": 1.03951450198809
+    },
+    {
+      "ticker": "ANTHEM",
+      "title": "Anthem Biosciences Ltd",
+      "type": "Equity",
+      "weight": 0.933928077732437
+    },
+    {
+      "ticker": "PIRAMALFIN",
+      "title": "Piramal Finance Ltd",
+      "type": "Equity",
+      "weight": 2.72579643356878
+    },
+    {
+      "ticker": "APTUS",
+      "title": "Aptus Value Housing Finance India Ltd",
+      "type": "Equity",
+      "weight": 0.321995109665416
+    },
+    {
+      "ticker": "INTELLECT",
+      "title": "Intellect Design Arena Ltd",
+      "type": "Equity",
+      "weight": 0.127128246196276
+    },
+    {
+      "ticker": null,
+      "title": "91 Days Treasury Bill 18-Dec-2025",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "91 Days Treasury Bill 02-Jan-2026",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "91 Days Treasury Bill 08-Jan-2026",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "91 Days Treasury Bill 29-Jan-2026",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "91 Days Treasury Bill 23-Jan-2026",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "182 Days Treasury Bill 29-Jan-2026",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "91 Days Treasury Bill 26-Feb-2026",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "91 Days Treasury Bill 25-Dec-2025",
+      "type": "Debt",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "TREPS 01-Dec-2025 DEPO 10",
+      "type": "Others",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "Adani Enterprises Limited Rights",
+      "type": "Others",
+      "weight": 0
+    },
+    {
+      "ticker": null,
+      "title": "MIDCAPNIFTY 30/12/2025",
+      "type": "Others",
+      "weight": 0
+    },
+    {
+      "ticker": "BBOX",
+      "title": "Black Box Ltd",
+      "type": "Equity",
+      "weight": 0.499050581019508
+    },
+    {
+      "ticker": "HDFCLIFE",
+      "title": "HDFC Life Insurance Company Ltd",
+      "type": "Equity",
+      "weight": 0.600896088587916
+    },
+    {
+      "ticker": null,
+      "title": "Adani Enterprises Limited PP RE",
+      "type": "Others",
+      "weight": 0.183349034817097
+    },
+    {
+      "ticker": "RELTD",
+      "title": "Ravindra Energy Ltd",
+      "type": "Equity",
+      "weight": 0.0371976215595238
+    },
+    {
+      "ticker": null,
+      "title": "91 Days Treasury Bill 17-Apr-2026",
+      "type": "Debt",
+      "weight": 0.215489096126472
+    },
+    {
+      "ticker": null,
+      "title": "91 Days Treasury Bill 30-Apr-2026",
+      "type": "Debt",
+      "weight": 0.164903368379244
+    },
+    {
+      "ticker": null,
+      "title": "91 Days Treasury Bill 23-Apr-2026",
+      "type": "Debt",
+      "weight": 0.0717684650797885
+    },
+    {
+      "ticker": "SUDEEPPHRM",
+      "title": "Sudeep Pharma Ltd",
+      "type": "Equity",
+      "weight": 0.0226566838204482
+    },
+    {
+      "ticker": null,
+      "title": "91 Days Treasury Bill 22-May-2026",
+      "type": "Debt",
+      "weight": 0.196549100726661
+    },
+    {
+      "ticker": null,
+      "title": "91 Days Treasury Bill 07-May-2026",
+      "type": "Debt",
+      "weight": 0.111017172134725
+    },
+    {
+      "ticker": null,
+      "title": "91 Days Treasury Bill 14-May-2026",
+      "type": "Debt",
+      "weight": 0.447204983408736
+    },
+    {
+      "ticker": null,
+      "title": "TREPS 02-Mar-2026 DEPO 10",
+      "type": "Others",
+      "weight": 4.0357902413301
+    }
+  ],
+  "sectorWeights": {
+    "Pharmaceuticals": 10.71,
+    "Oil & Gas - Refining & Marketing": 9.36,
+    "Private Banks": 8.04,
+    "Specialized Finance": 6.32,
+    "Power Generation": 4.96,
+    "Others": 4.3,
+    "Commodities Trading": 4.28,
+    "Miscellaneous": 4.04,
+    "Construction & Engineering": 3.8,
+    "Textiles": 3.44,
+    "TV Channels & Broadcasters": 3.43,
+    "Packaged Foods & Meats": 3.26,
+    "Auto Parts": 3.25,
+    "Hotels, Resorts & Cruise Lines": 3.25,
+    "Iron & Steel": 3.17,
+    "Home Financing": 3.05,
+    "Investment Banking & Brokerage": 2.68,
+    "Labs & Life Sciences Services": 2.68,
+    "Real Estate": 2.33,
+    "Fertilizers & Agro Chemicals": 2.26,
+    "Retail - Speciality": 2.08,
+    "Health Care Equipment & Supplies": 1.98,
+    "G-Sec": 1.21,
+    "Diversified Chemicals": 1.19,
+    "Sugar": 1.18,
+    "Packaging": 0.62,
+    "Insurance": 0.6,
+    "Electrical Components & Equipments": 0.55,
+    "Telecom Equipments": 0.5,
+    "IT Services & Consulting": 0.31,
+    "Alcoholic Beverages": 0.26,
+    "Footwear": 0.25,
+    "Commodity Chemicals": 0.21,
+    "Industrial Machinery": 0.17,
+    "Mining - Diversified": 0.16,
+    "FMCG - Household Products": 0.14,
+    "Paints": 0.0,
+    "Telecom Services": 0.0,
+    "Specialty Chemicals": 0.0,
+    "Metals - Diversified": 0.0,
+    "Logistics": 0.0,
+    "Hospitals & Diagnostic Centres": 0.0,
+    "Public Banks": 0.0,
+    "FMCG - Tobacco": 0.0,
+    "Oil & Gas - Exploration & Production": 0.0,
+    "Retail - Online": 0.0,
+    "Agro Products": 0.0,
+    "Building Products - Glass": 0.0,
+    "Plastic Products": 0.0,
+    "Shipbuilding": 0.0,
+    "Building Products - Prefab Structures": 0.0,
+    "Cables": 0.0,
+    "Home Electronics & Appliances": 0.0,
+    "Paper Products": 0.0,
+    "Consumer Finance": 0.0,
+    "Asset Management": 0.0,
+    "Metals - Aluminium": 0.0,
+    "Oil & Gas - Storage & Transportation": 0.0,
+    "Tour & Travel Services": 0.0,
+    "Tea & Coffee": 0.0,
+    "Four Wheelers": 0.0,
+    "Trucks & Buses": 0.0,
+    "Stock Exchanges & Ratings": 0.0,
+    "Agricultural & Farm Machinery": 0.0,
+    "Batteries": 0.0,
+    "Airlines": 0.0
+  }
+}
