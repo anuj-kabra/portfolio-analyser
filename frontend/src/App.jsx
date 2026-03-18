@@ -141,7 +141,7 @@ export default function App() {
   const hasResults = useMemo(() => Boolean(results?.overlap), [results]);
   const DEEP_TABS = [
     { id: "var", label: "Rupee-at-Risk" },
-    { id: "ghost", label: "Ghost Portfolio" },
+    { id: "ghost", label: "Fund X-Ray" },
     { id: "replay", label: "Crash Replay" },
     { id: "contagion", label: "Contagion Map" },
     { id: "swap", label: "Fund Swap Lab" },
@@ -216,7 +216,7 @@ export default function App() {
 
             {resultPage === "overview" ? (
               <>
-                <div className="animate-in"><OverlapMatrix overlap={results.overlap} totalInvested={results.totalInvested} /></div>
+                <div className="animate-in"><OverlapMatrix overlap={results.overlap} totalInvested={results.totalInvested} ghost={results.ghost} /></div>
                 <div className="animate-in delay-1"><SectorChart sectorExposure={results.sectorExposure} /></div>
                 <div className="animate-in delay-2"><CrashSimulator totalInvested={results.totalInvested} sectorExposure={results.sectorExposure} /></div>
                 <div className="animate-in delay-3"><ELI5Section eli5={results.eli5} /></div>

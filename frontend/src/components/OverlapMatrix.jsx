@@ -6,21 +6,39 @@ function overlapTone(overlapPct) {
 
 const INR = new Intl.NumberFormat("en-IN");
 
-export default function OverlapMatrix({ overlap, totalInvested = 0 }) {
+function shortName(name) {
+  return String(name || "").split(" Fund")[0];
+}
+
+export default function OverlapMatrix({ overlap, totalInvested = 0, ghost }) {
+  const redundantStocks = ghost?.redundantStocks ?? 0;
+  const sharedAmount = overlap.topSharedStocks.reduce(
+    (sum, s) => sum + Math.round((totalInvested * s.combinedWeight) / 100),
+    0
+  );
+
   return (
     <section>
       <h2 className="text-sm font-medium text-white mb-1">
         Funds share <span className="text-white font-semibold">{overlap.averageOverlapPct}%</span> overlap on average
       </h2>
-      <p className="text-xs text-[#5c5c63] mb-5">Pairwise stock overlap between selected funds</p>
+      <p className="text-xs text-[#5c5c63] mb-3">Pairwise stock overlap between selected funds</p>
+
+      {redundantStocks > 0 && (
+        <div className="card p-4 mb-5 border-amber-500/20 bg-amber-500/[0.04] text-sm text-[#a0a0a6]">
+          {redundantStocks} shared stocks across your funds represent INR {INR.format(sharedAmount)} — you&apos;re
+          paying multiple fund managers for the same positions.
+        </div>
+      )}
 
       <div className="grid sm:grid-cols-2 gap-2">
         {overlap.pairs.map((pair) => {
           const tone = overlapTone(pair.overlapPct);
+          const topShared = pair.sharedStocks?.[0];
           return (
             <div key={`${pair.idA}-${pair.idB}`} className="card p-4">
               <div className="text-xs text-[#a0a0a6] mb-3">
-                {pair.fundA} <span className="text-[#3a3a40]">vs</span> {pair.fundB}
+                {shortName(pair.fundA)} <span className="text-[#3a3a40]">vs</span> {shortName(pair.fundB)}
               </div>
               <div className="flex items-end justify-between">
                 <span className={`text-2xl font-semibold ${tone.text}`}>{pair.overlapPct}%</span>
@@ -29,6 +47,11 @@ export default function OverlapMatrix({ overlap, totalInvested = 0 }) {
                   {tone.label}
                 </span>
               </div>
+              {pair.overlapPct > 20 && topShared && (
+                <div className="text-[11px] text-[#5c5c63] mt-1">
+                  Top shared: {topShared.name} ({topShared.combinedWeight}%)
+                </div>
+              )}
               <div className="mt-3 h-1 bg-white/[0.04] rounded-full overflow-hidden">
                 <div
                   className={`h-full rounded-full ${tone.bar}`}
@@ -74,6 +97,12 @@ export default function OverlapMatrix({ overlap, totalInvested = 0 }) {
           </div>
         )}
       </div>
+
+      {overlap.averageOverlapPct > 20 && (
+        <div className="mt-6 card p-4 border-amber-500/20 bg-amber-500/[0.04] text-sm text-[#a0a0a6]">
+          High overlap means higher blended TER without diversification benefit. Consider swapping one fund.
+        </div>
+      )}
     </section>
   );
 }

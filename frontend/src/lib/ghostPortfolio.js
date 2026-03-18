@@ -21,6 +21,7 @@ export function buildGhostPortfolio(portfolio) {
       excessFee: 0,
       top10Weight: 0,
       totalInvested: 0,
+      fundTERs: [],
     };
   }
 
@@ -72,6 +73,16 @@ export function buildGhostPortfolio(portfolio) {
   const indexFundFee = Math.round((totalInvested * 0.1) / 100);
   const excessFee = Math.max(annualFeeRupees - indexFundFee, 0);
 
+  const fundTERs = portfolio.map((item) => {
+    const ter = Number(item?.fund?.ter) || 0.6;
+    const amount = Number(item?.amount) || 0;
+    return {
+      name: item?.fund?.name || "Unknown",
+      ter: +ter.toFixed(2),
+      annualCost: Math.round((amount * ter) / 100),
+    };
+  });
+
   return {
     holdings,
     top20,
@@ -86,6 +97,7 @@ export function buildGhostPortfolio(portfolio) {
     excessFee,
     top10Weight,
     totalInvested,
+    fundTERs,
   };
 }
 

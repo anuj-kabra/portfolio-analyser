@@ -20,6 +20,12 @@ export function simulateSwap(currentPortfolio, removeIndex, replacementFund) {
   const beforeCrash = simulateCrash(totalInvested, beforeSector, beforeTopSector, 30);
   const afterCrash = simulateCrash(totalInvested, afterSector, afterTopSector, 30);
 
+  const beforeTer = Number(replaced.fund?.ter) || 0.6;
+  const afterTer = Number(replacementFund?.ter) || 0.6;
+  const amount = Number(replaced.amount) || 0;
+  const terSavingsPct = beforeTer - afterTer;
+  const terSavingsRupees = Math.round((amount * Math.max(terSavingsPct, 0)) / 100);
+
   return {
     removedFund: replaced.fund,
     replacementFund,
@@ -28,12 +34,14 @@ export function simulateSwap(currentPortfolio, removeIndex, replacementFund) {
       topSector: beforeTopSector,
       topSectorPct: beforeSector[beforeTopSector]?.weightPct || 0,
       worstCrashLoss: beforeCrash.rupeeLoss,
+      ter: beforeTer,
     },
     after: {
       avgOverlap: afterOverlap.averageOverlapPct,
       topSector: afterTopSector,
       topSectorPct: afterSector[afterTopSector]?.weightPct || 0,
       worstCrashLoss: afterCrash.rupeeLoss,
+      ter: afterTer,
     },
     delta: {
       overlapChange: +(afterOverlap.averageOverlapPct - beforeOverlap.averageOverlapPct).toFixed(1),
@@ -41,6 +49,8 @@ export function simulateSwap(currentPortfolio, removeIndex, replacementFund) {
         (afterSector[afterTopSector]?.weightPct || 0) - (beforeSector[beforeTopSector]?.weightPct || 0)
       ).toFixed(1),
       crashLossSaved: beforeCrash.rupeeLoss - afterCrash.rupeeLoss,
+      terSavingsPct,
+      terSavingsRupees,
     },
   };
 }
@@ -50,7 +60,9 @@ export function rankReplacements(currentPortfolio, removeIndex, allFunds) {
   if (!removed) return [];
 
   const inPortfolio = new Set(currentPortfolio.map((item) => item.fund.id));
-  const candidates = allFunds.filter((fund) => fund.category === removed.category && !inPortfolio.has(fund.id));
+  const candidates = allFunds.filter(
+    (fund) => fund.id !== removed.id && fund.category === removed.category && !inPortfolio.has(fund.id)
+  );
   const scored = candidates.map((fund) => {
     const simulation = simulateSwap(currentPortfolio, removeIndex, fund);
     const score = -simulation.delta.overlapChange * 0.7 + (simulation.delta.crashLossSaved / 1000) * 0.3;

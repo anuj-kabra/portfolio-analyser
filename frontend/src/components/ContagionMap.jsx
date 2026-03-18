@@ -1,5 +1,7 @@
 import { useMemo, useState } from "react";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from "recharts";
 import { simulateContagion } from "../lib/contagion";
+import { getCorrelationReason } from "../data/correlationReasons";
 
 const INR = new Intl.NumberFormat("en-IN");
 
@@ -10,11 +12,30 @@ export default function ContagionMap({ totalInvested, sectorExposure }) {
   const activeSector = sectors.includes(triggerSector) ? triggerSector : sectors[0] || "";
   const result = simulateContagion(totalInvested, sectorExposure, activeSector, crashPct);
 
+  const chartData = result.cascade.map((item) => ({
+    sector: item.sector + (item.type === "contagion" ? ` (ρ ${item.correlation.toFixed(2)})` : ""),
+    lossRupees: item.lossRupees,
+    type: item.type,
+  }));
+
+  const contagionPairs = result.cascade.filter((c) => c.type === "contagion");
+  const reasonCards = contagionPairs
+    .map((c) => {
+      const reason = getCorrelationReason(activeSector, c.sector);
+      return reason ? { sector: c.sector, correlation: c.correlation, reason } : null;
+    })
+    .filter(Boolean);
+
   if (!activeSector) return null;
 
   return (
     <section className="space-y-4">
       <h2 className="text-sm font-medium text-white">Contagion Map</h2>
+
+      <p className="text-sm text-[#a0a0a6] leading-relaxed">
+        Models how a shock in one sector spreads to correlated sectors. Correlation (ρ) is sourced from historical
+        co-movement of NSE sectoral indices.
+      </p>
 
       <div className="grid sm:grid-cols-2 gap-3">
         <div className="card p-3">
@@ -59,24 +80,48 @@ export default function ContagionMap({ totalInvested, sectorExposure }) {
         </div>
       </div>
 
-      <div className="card p-4 space-y-2">
-        {result.cascade.map((item) => (
-          <div key={item.sector} className="flex items-center text-xs">
-            <span className={`w-2.5 h-2.5 rounded-full mr-2 ${item.type === "direct" ? "bg-red-500" : "bg-amber-400"}`} />
-            <span className="w-28 text-[#a0a0a6] truncate">
-              {item.sector}
-              {item.type === "contagion" ? ` (rho ${item.correlation.toFixed(2)})` : ""}
-            </span>
-            <div className="flex-1 mx-2 h-2 bg-white/[0.04] rounded-full overflow-hidden">
-              <div
-                className={`${item.type === "direct" ? "bg-red-400" : "bg-amber-300"} h-full`}
-                style={{ width: `${(Math.min(item.crashPct, 60) / 60) * 100}%` }}
+      <div className="card p-4">
+        <div className="text-xs text-[#5c5c63] mb-3">Sector loss by type</div>
+        <div className="h-56">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={chartData} layout="vertical" margin={{ top: 0, right: 20, left: 0, bottom: 0 }}>
+              <XAxis type="number" tickFormatter={(v) => `INR ${(v / 1000).toFixed(0)}k`} stroke="#5c5c63" fontSize={10} />
+              <YAxis type="category" dataKey="sector" width={120} stroke="#5c5c63" fontSize={10} tick={{ fill: "#a0a0a6" }} />
+              <Tooltip
+                contentStyle={{ backgroundColor: "#1a1a1b", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 8 }}
+                formatter={(value) => [`-INR ${INR.format(value)}`, "Loss"]}
               />
-            </div>
-            <span className="w-16 text-right text-red-300">-INR {INR.format(item.lossRupees)}</span>
-          </div>
-        ))}
+              <Bar dataKey="lossRupees" radius={[0, 4, 4, 0]}>
+                {chartData.map((entry, i) => (
+                  <Cell key={i} fill={entry.type === "direct" ? "#ef4444" : "#f59e0b"} />
+                ))}
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+        <div className="flex gap-4 mt-2 text-[11px] text-[#5c5c63]">
+          <span className="flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-red-500" /> Direct
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-amber-400" /> Contagion
+          </span>
+        </div>
       </div>
+
+      {reasonCards.length > 0 && (
+        <div className="space-y-2">
+          <h3 className="text-xs font-medium text-white">Why these sectors move together</h3>
+          {reasonCards.map((card) => (
+            <div key={card.sector} className="card p-3 border-white/[0.06]">
+              <div className="text-xs text-amber-400/90">
+                {activeSector} → {card.sector} (ρ {card.correlation.toFixed(2)})
+              </div>
+              <p className="text-xs text-[#a0a0a6] mt-1">{card.reason}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 }
