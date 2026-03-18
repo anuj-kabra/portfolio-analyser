@@ -57,7 +57,9 @@ export function buildGhostPortfolio(portfolio) {
     }))
     .sort((a, b) => b.effectiveWeight - a.effectiveWeight);
 
-  const hhi = Math.round(holdings.reduce((sum, h) => sum + Math.pow(h.effectiveWeight, 2), 0));
+  // Raw HHI on the 0-10,000 scale; convert to a simpler 0-100 UI scale.
+  const rawHhi = holdings.reduce((sum, h) => sum + Math.pow(h.effectiveWeight, 2), 0);
+  const hhi = +(rawHhi / 100).toFixed(1);
   const totalStocks = holdings.length;
   const uniqueStocks = holdings.filter((h) => h.heldBy.length === 1).length;
   const redundantStocks = holdings.filter((h) => h.heldBy.length >= 2).length;
@@ -103,9 +105,9 @@ export function buildGhostPortfolio(portfolio) {
 
 export function ghostSummaryText(ghost) {
   const concentration =
-    ghost.hhi > 2500
+    ghost.hhi > 25
       ? "highly concentrated"
-      : ghost.hhi > 1000
+      : ghost.hhi > 10
         ? "moderately concentrated"
         : "well diversified";
 

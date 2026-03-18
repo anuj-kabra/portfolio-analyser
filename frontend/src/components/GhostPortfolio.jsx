@@ -3,8 +3,8 @@ import { ghostSummaryText } from "../lib/ghostPortfolio";
 const INR = new Intl.NumberFormat("en-IN");
 
 function hhiTone(hhi) {
-  if (hhi < 1000) return "text-emerald-400";
-  if (hhi <= 2500) return "text-amber-400";
+  if (hhi < 10) return "text-emerald-400";
+  if (hhi <= 25) return "text-amber-400";
   return "text-red-400";
 }
 
