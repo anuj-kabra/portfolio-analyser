@@ -11,6 +11,9 @@ import GhostPortfolio from "./components/GhostPortfolio";
 import CrashReplay from "./components/CrashReplay";
 import ContagionMap from "./components/ContagionMap";
 import FundSwapLab from "./components/FundSwapLab";
+import { SplineScene } from "./components/ui/splite";
+import { Spotlight } from "./components/ui/spotlight";
+import { Card } from "./components/ui/card";
 import { DEMO_PORTFOLIOS } from "./data/demoPortfolios";
 import { analyseOverlap } from "./lib/overlap";
 import { computeSectorExposure } from "./lib/sectorRisk";
@@ -152,16 +155,38 @@ export default function App() {
       <main className="max-w-4xl mx-auto px-5 sm:px-8 py-12 sm:py-20">
         {/* Header */}
         <header className="mb-14 animate-in">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.04] border border-white/[0.06] px-3 py-1 text-xs text-[#a0a0a6] mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-            MF Portfolio Analyzer
-          </div>
-          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-white leading-[1.15]">
-            See hidden overlap, sector risk<br className="hidden sm:block" /> &amp; clear next steps
-          </h1>
-          <p className="mt-4 text-[15px] text-[#5c5c63] max-w-xl leading-relaxed">
-            Add 2–6 mutual funds, compare stock overlap, simulate a sector crash, and get a plain-English summary.
-          </p>
+          <Card className="w-full h-[500px] bg-[#0a0a0b] relative overflow-hidden">
+            <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="#ececed" />
+            <div className="flex h-full">
+              <div className="flex-1 p-8 relative z-10 flex flex-col justify-center">
+                <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.04] border border-white/[0.06] px-3 py-1 text-xs text-[#a0a0a6] mb-5 w-fit">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                  MF Portfolio Analyzer
+                </div>
+                <h1 className="text-3xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 leading-[1.15]">
+                  See hidden overlap,<br />sector risk &amp;<br />clear next steps
+                </h1>
+                <p className="mt-4 text-[15px] text-[#5c5c63] max-w-sm leading-relaxed">
+                  Add 2–6 mutual funds, compare stock overlap, simulate a sector crash, and get a plain-English summary.
+                </p>
+              </div>
+              <div
+                className="flex-1"
+                style={{
+                  filter: 'brightness(1.4)',
+                  WebkitMaskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent), linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)',
+                  WebkitMaskComposite: 'source-in',
+                  maskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent), linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)',
+                  maskComposite: 'intersect',
+                }}
+              >
+                <SplineScene
+                  scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+                  className="w-full h-full"
+                />
+              </div>
+            </div>
+          </Card>
         </header>
 
         {/* Error */}
