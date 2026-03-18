@@ -1,43 +1,48 @@
-const CARD_STYLES = {
-  concentrated: "border-l-4 border-amber-400 bg-amber-50",
-  redundant: "border-l-4 border-red-400 bg-red-50",
-  recommendation: "border-l-4 border-green-400 bg-green-50",
-};
-
-const LABELS = {
-  concentrated: "What's concentrated",
-  redundant: "What's redundant",
-  recommendation: "What to change",
-};
+const CARDS = [
+  { key: "concentrated", label: "Concentrated" },
+  { key: "redundant", label: "Redundant" },
+  { key: "recommendation", label: "Recommendation" },
+];
 
 export default function AIInsights({ insights, loading, error }) {
   if (loading) {
     return (
-      <section className="rounded-xl border border-gray-200 p-5 text-center">
-        <div className="animate-spin inline-block h-5 w-5 border-2 border-gray-300 border-t-blue-500 rounded-full" />
-        <p className="mt-2 text-sm text-gray-600">Asking our AI analyst...</p>
+      <section className="card p-6 text-center">
+        <div className="inline-flex items-center gap-2.5">
+          <div className="w-4 h-4 border-2 border-white/10 border-t-white/60 rounded-full animate-spin" />
+          <p className="text-sm text-[#5c5c63]">Generating AI insights…</p>
+        </div>
+        <div className="mt-5 space-y-2">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="h-14 rounded-lg animate-shimmer" />
+          ))}
+        </div>
       </section>
     );
   }
 
   if (error || !insights) {
     return (
-      <section className="rounded-xl border border-gray-200 bg-gray-50 p-5 text-sm text-gray-600">
-        AI insights are unavailable right now, but the overlap and risk analysis above is still valid.
+      <section className="card p-5 text-sm text-[#5c5c63]">
+        AI insights are unavailable right now. The analysis above is still valid.
       </section>
     );
   }
 
   return (
     <section>
-      <h2 className="text-xl font-semibold text-gray-900 mb-3">AI insights</h2>
-      <div className="space-y-3">
-        {Object.keys(CARD_STYLES).map((key) => (
-          <div key={key} className={`rounded-xl p-4 ${CARD_STYLES[key]}`}>
-            <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-600 mb-1">
-              {LABELS[key]}
-            </h3>
-            <p className="text-sm text-gray-800">{insights[key]}</p>
+      <div className="flex items-center gap-2 mb-4">
+        <h2 className="text-sm font-medium text-white">AI insights</h2>
+        <span className="text-[10px] text-[#5c5c63] px-1.5 py-0.5 rounded bg-white/[0.04] border border-white/[0.06]">
+          Gemini
+        </span>
+      </div>
+
+      <div className="space-y-2">
+        {CARDS.map((card) => (
+          <div key={card.key} className="card p-4">
+            <h3 className="text-xs font-medium text-[#5c5c63] uppercase tracking-wide mb-1">{card.label}</h3>
+            <p className="text-sm text-[#a0a0a6] leading-relaxed">{insights[card.key]}</p>
           </div>
         ))}
       </div>

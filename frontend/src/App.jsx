@@ -37,7 +37,6 @@ export default function App() {
         setFundsError("Could not load funds from backend.");
       }
     }
-
     loadFunds();
   }, []);
 
@@ -95,18 +94,10 @@ export default function App() {
       const res = await fetch(`${getApiBaseUrl()}/api/insights`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          portfolioSummary,
-          overlapSummary,
-          sectorSummary,
-          availableFunds,
-        }),
+        body: JSON.stringify({ portfolioSummary, overlapSummary, sectorSummary, availableFunds }),
       });
 
-      if (!res.ok) {
-        throw new Error(`HTTP ${res.status}`);
-      }
-
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       return await res.json();
     } catch (error) {
       console.error("Gemini insights failed:", error);
@@ -130,46 +121,62 @@ export default function App() {
   const hasResults = useMemo(() => Boolean(results?.overlap), [results]);
 
   return (
-    <div className="min-h-screen bg-white">
-      <main className="max-w-5xl mx-auto px-4 py-8 sm:py-10">
-        <header className="mb-8">
-          <p className="inline-flex rounded-full bg-sky-100 px-3 py-1 text-xs text-sky-700 mb-4">
+    <div className="min-h-screen bg-[#0a0a0b]">
+      <main className="max-w-4xl mx-auto px-5 sm:px-8 py-12 sm:py-20">
+        {/* Header */}
+        <header className="mb-14 animate-in">
+          <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.04] border border-white/[0.06] px-3 py-1 text-xs text-[#a0a0a6] mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
             MF Portfolio Analyzer
-          </p>
-          <h1 className="text-3xl sm:text-5xl font-semibold tracking-tight text-gray-900">
-            See hidden mutual fund overlap, sector risk, and clear next steps
+          </div>
+          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-white leading-[1.15]">
+            See hidden overlap, sector risk<br className="hidden sm:block" /> &amp; clear next steps
           </h1>
-          <p className="mt-4 text-gray-600 max-w-3xl">
-            Add 2 to 6 funds, compare stock overlap by ticker, simulate a sector crash in rupees, and get a plain-English
-            summary.
+          <p className="mt-4 text-[15px] text-[#5c5c63] max-w-xl leading-relaxed">
+            Add 2–6 mutual funds, compare stock overlap, simulate a sector crash, and get a plain-English summary.
           </p>
         </header>
 
+        {/* Error */}
         {fundsError ? (
-          <div className="mb-6 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-800">{fundsError}</div>
+          <div className="mb-8 card px-4 py-3 text-sm text-amber-400/80 border-amber-500/20 animate-in">
+            {fundsError}
+          </div>
         ) : null}
 
-        <DemoButtons onDemo={handleDemo} disabled={allFunds.length === 0} />
+        {/* Demo */}
+        <div className="animate-in delay-1">
+          <DemoButtons onDemo={handleDemo} disabled={allFunds.length === 0} />
+        </div>
 
-        <div className="my-8 border-t border-gray-200" />
+        {/* Divider */}
+        <div className="my-10 h-px bg-white/[0.06]" />
 
-        <PortfolioInput
-          allFunds={allFunds}
-          portfolio={portfolio}
-          onPortfolioChange={setPortfolio}
-          onAnalyse={() => runAnalysis(portfolio)}
-          isAnalysing={isAnalysing}
-        />
+        {/* Input */}
+        <div className="animate-in delay-2">
+          <PortfolioInput
+            allFunds={allFunds}
+            portfolio={portfolio}
+            onPortfolioChange={setPortfolio}
+            onAnalyse={() => runAnalysis(portfolio)}
+            isAnalysing={isAnalysing}
+          />
+        </div>
 
+        {/* Results */}
         {hasResults ? (
-          <section id="results" className="mt-10 space-y-10">
-            <OverlapMatrix overlap={results.overlap} />
-            <SectorChart sectorExposure={results.sectorExposure} />
-            <CrashSimulator totalInvested={results.totalInvested} sectorExposure={results.sectorExposure} />
-            <ELI5Section eli5={results.eli5} />
-            <AIInsights insights={geminiInsights} loading={geminiLoading} error={insightsError} />
+          <section id="results" className="mt-14 space-y-10">
+            <div className="animate-in"><OverlapMatrix overlap={results.overlap} /></div>
+            <div className="animate-in delay-1"><SectorChart sectorExposure={results.sectorExposure} /></div>
+            <div className="animate-in delay-2"><CrashSimulator totalInvested={results.totalInvested} sectorExposure={results.sectorExposure} /></div>
+            <div className="animate-in delay-3"><ELI5Section eli5={results.eli5} /></div>
+            <div className="animate-in delay-4"><AIInsights insights={geminiInsights} loading={geminiLoading} error={insightsError} /></div>
           </section>
         ) : null}
+
+        <footer className="mt-20 pt-6 border-t border-white/[0.04] text-center text-xs text-[#3a3a40]">
+          Built with React &amp; Gemini AI · Data for educational purposes only
+        </footer>
       </main>
     </div>
   );

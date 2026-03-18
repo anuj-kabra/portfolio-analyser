@@ -1,32 +1,32 @@
 import { DEMO_PORTFOLIOS } from "../data/demoPortfolios";
 
-const cardStyles = {
-  high: "border-red-200 bg-red-50 hover:bg-red-100",
-  medium: "border-amber-200 bg-amber-50 hover:bg-amber-100",
-  low: "border-green-200 bg-green-50 hover:bg-green-100",
+const borderColor = {
+  high: "border-red-500/30",
+  medium: "border-amber-500/30",
+  low: "border-emerald-500/30",
 };
 
 const badgeStyles = {
-  high: "bg-red-100 text-red-700",
-  medium: "bg-amber-100 text-amber-700",
-  low: "bg-green-100 text-green-700",
+  high: "text-red-400 bg-red-500/10",
+  medium: "text-amber-400 bg-amber-500/10",
+  low: "text-emerald-400 bg-emerald-500/10",
 };
 
 export default function DemoButtons({ onDemo, disabled }) {
   return (
     <section>
-      <p className="text-sm font-medium text-gray-500 mb-3">Try a demo portfolio</p>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <p className="text-xs text-[#5c5c63] mb-3">Try a demo portfolio</p>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
         {Object.entries(DEMO_PORTFOLIOS).map(([key, demo]) => (
           <button
             key={key}
             type="button"
             onClick={() => onDemo(key)}
             disabled={disabled}
-            className={`text-left rounded-xl border p-4 transition-colors disabled:opacity-50 ${cardStyles[demo.riskLevel]}`}
+            className={`text-left card p-4 disabled:opacity-30 disabled:cursor-not-allowed hover:bg-white/[0.03] active:bg-white/[0.05] transition-colors ${borderColor[demo.riskLevel]}`}
           >
-            <div className="font-semibold text-gray-900">{demo.label}</div>
-            <span className={`inline-block mt-2 text-xs px-2 py-1 rounded-full ${badgeStyles[demo.riskLevel]}`}>
+            <div className="text-sm font-medium text-white mb-2">{demo.label}</div>
+            <span className={`inline-block text-[11px] font-medium px-2 py-0.5 rounded-full ${badgeStyles[demo.riskLevel]}`}>
               {demo.badge}
             </span>
           </button>
